@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="一、查找数组中元素位置题目描述：找出元素item在给定数组arr中的位置 输出描述：  如果数组中存在 item，则返回元素在数组中的位置，否则返回 -1">
+<meta name="description" content="查找数组中元素位置题目描述：找出元素item在给定数组arr中的位置 输出描述：  如果数组中存在 item，则返回元素在数组中的位置，否则返回 -1">
 <meta name="keywords" content="JavaScript,算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript 数组中常见算法(一）">
 <meta property="og:url" content="http://yoursite.com/2019/04/05/JavaScript-数组中常见算法/index.html">
 <meta property="og:site_name" content="Echo">
-<meta property="og:description" content="一、查找数组中元素位置题目描述：找出元素item在给定数组arr中的位置 输出描述：  如果数组中存在 item，则返回元素在数组中的位置，否则返回 -1">
+<meta property="og:description" content="查找数组中元素位置题目描述：找出元素item在给定数组arr中的位置 输出描述：  如果数组中存在 item，则返回元素在数组中的位置，否则返回 -1">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-05T12:53:17.069Z">
+<meta property="og:updated_time" content="2019-04-05T13:08:40.162Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript 数组中常见算法(一）">
-<meta name="twitter:description" content="一、查找数组中元素位置题目描述：找出元素item在给定数组arr中的位置 输出描述：  如果数组中存在 item，则返回元素在数组中的位置，否则返回 -1">
+<meta name="twitter:description" content="查找数组中元素位置题目描述：找出元素item在给定数组arr中的位置 输出描述：  如果数组中存在 item，则返回元素在数组中的位置，否则返回 -1">
 
 
 
@@ -352,67 +352,67 @@
       
 
       
-        <h4 id="一、查找数组中元素位置"><a href="#一、查找数组中元素位置" class="headerlink" title="一、查找数组中元素位置"></a>一、查找数组中元素位置</h4><p>题目描述：<br><strong>找出元素item在给定数组arr中的位置</strong></p>
+        <h4 id="查找数组中元素位置"><a href="#查找数组中元素位置" class="headerlink" title="查找数组中元素位置"></a>查找数组中元素位置</h4><p>题目描述：<br><strong>找出元素item在给定数组arr中的位置</strong></p>
 <p>输出描述：</p>
 <blockquote>
 <p>如果数组中存在 item，则返回元素在数组中的位置，否则返回 -1</p>
 </blockquote>
 <a id="more"></a>
 <p>解决方案：</p>
-<h5 id="1-indexOf-方法返回在数组中可以找到给定元素的第一个索引"><a href="#1-indexOf-方法返回在数组中可以找到给定元素的第一个索引" class="headerlink" title="1. indexOf()方法返回在数组中可以找到给定元素的第一个索引"></a>1. indexOf()方法返回在数组中可以找到给定元素的第一个索引</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function indexOf(arr,item) &#123;</span><br><span class="line">    return arr.indexOf(item);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-<h5 id="2-如果浏览器不支持indexOf的方案"><a href="#2-如果浏览器不支持indexOf的方案" class="headerlink" title="2. 如果浏览器不支持indexOf的方案"></a>2. 如果浏览器不支持indexOf的方案</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function indexOf(ar,item) &#123;</span><br><span class="line">    if(Array.prototype.indexOf)&#123;  // 判断当前浏览器是否支持</span><br><span class="line">        return arr.indexOf(item);</span><br><span class="line">    &#125;else &#123;</span><br><span class="line">        for(var i =0; i &lt;arr.length; i++) &#123;</span><br><span class="line">            return i;</span><br><span class="line">        &#125;</span><br><span class="line">     &#125;</span><br><span class="line">   return -1;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<h4 id="二、计算数组中所有元素的总和"><a href="#二、计算数组中所有元素的总和" class="headerlink" title="二、计算数组中所有元素的总和"></a>二、计算数组中所有元素的总和</h4><p>题目描述：<br><strong>计算给定数组 arr 中所有元素的总和</strong></p>
+<h5 id="indexOf-方法返回在数组中可以找到给定元素的第一个索引"><a href="#indexOf-方法返回在数组中可以找到给定元素的第一个索引" class="headerlink" title="indexOf()方法返回在数组中可以找到给定元素的第一个索引"></a>indexOf()方法返回在数组中可以找到给定元素的第一个索引</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function indexOf(arr,item) &#123;</span><br><span class="line">    return arr.indexOf(item);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h5 id="如果浏览器不支持indexOf的方案"><a href="#如果浏览器不支持indexOf的方案" class="headerlink" title="如果浏览器不支持indexOf的方案"></a>如果浏览器不支持indexOf的方案</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function indexOf(ar,item) &#123;</span><br><span class="line">    if(Array.prototype.indexOf)&#123;  // 判断当前浏览器是否支持</span><br><span class="line">        return arr.indexOf(item);</span><br><span class="line">    &#125;else &#123;</span><br><span class="line">        for(var i =0; i &lt;arr.length; i++) &#123;</span><br><span class="line">            return i;</span><br><span class="line">        &#125;</span><br><span class="line">     &#125;</span><br><span class="line">   return -1;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="计算数组中所有元素的总和"><a href="#计算数组中所有元素的总和" class="headerlink" title="计算数组中所有元素的总和"></a>计算数组中所有元素的总和</h4><p>题目描述：<br><strong>计算给定数组 arr 中所有元素的总和</strong></p>
 <p>输出描述：</p>
 <blockquote>
 <p>数组中的元素均为 Number 类型</p>
 </blockquote>
 <p>解决方案：</p>
-<h5 id="1-普通的遍历求值"><a href="#1-普通的遍历求值" class="headerlink" title="1.普通的遍历求值"></a>1.普通的遍历求值</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var sum = function(arr) &#123;</span><br><span class="line">    var length = arr.length, sum =0;</span><br><span class="line">    for(var i = 0; i&lt;length;i++) &#123;</span><br><span class="line">        sum += arr[i];</span><br><span class="line">    &#125;</span><br><span class="line">    return sum;</span><br><span class="line"> &#125;;</span><br></pre></td></tr></table></figure>
-<h5 id="2-使用forEach遍历"><a href="#2-使用forEach遍历" class="headerlink" title="2.使用forEach遍历"></a>2.使用forEach遍历</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function sum(arr)  &#123;</span><br><span class="line">    var sum = 0;</span><br><span class="line">    arr.forEach(function(value, index, arr) &#123;</span><br><span class="line">        sum += value;</span><br><span class="line">    &#125;,0);</span><br><span class="line">    return sum;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-<h5 id="3-使用累加方法reduce"><a href="#3-使用累加方法reduce" class="headerlink" title="3.使用累加方法reduce"></a>3.使用累加方法reduce</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function sum(arr) &#123;</span><br><span class="line">    return arr.reduce(function(prev, curr, idx, arr)&#123;</span><br><span class="line">        return prev + curr;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="4-使用方法eval"><a href="#4-使用方法eval" class="headerlink" title="4.使用方法eval"></a>4.使用方法eval</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function sum(arr) &#123;</span><br><span class="line">    return eval(arr.join(&quot;+&quot;));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="三、移除数组中的元素（不直接修改原数组）"><a href="#三、移除数组中的元素（不直接修改原数组）" class="headerlink" title="三、移除数组中的元素（不直接修改原数组）"></a>三、移除数组中的元素（不直接修改原数组）</h4><p>题目描述：<br><strong>移除数组 arr 中的所有值与 item 相等的元素。不要直接修改数组 arr，结果返回新的数组</strong></p>
+<h5 id="普通的遍历求值"><a href="#普通的遍历求值" class="headerlink" title="普通的遍历求值"></a>普通的遍历求值</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var sum = function(arr) &#123;</span><br><span class="line">    var length = arr.length, sum =0;</span><br><span class="line">    for(var i = 0; i&lt;length;i++) &#123;</span><br><span class="line">        sum += arr[i];</span><br><span class="line">    &#125;</span><br><span class="line">    return sum;</span><br><span class="line"> &#125;;</span><br></pre></td></tr></table></figure>
+<h5 id="使用forEach遍历"><a href="#使用forEach遍历" class="headerlink" title="使用forEach遍历"></a>使用forEach遍历</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function sum(arr)  &#123;</span><br><span class="line">    var sum = 0;</span><br><span class="line">    arr.forEach(function(value, index, arr) &#123;</span><br><span class="line">        sum += value;</span><br><span class="line">    &#125;,0);</span><br><span class="line">    return sum;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h5 id="使用累加方法reduce"><a href="#使用累加方法reduce" class="headerlink" title="使用累加方法reduce"></a>使用累加方法reduce</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function sum(arr) &#123;</span><br><span class="line">    return arr.reduce(function(prev, curr, idx, arr)&#123;</span><br><span class="line">        return prev + curr;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="使用方法eval"><a href="#使用方法eval" class="headerlink" title="使用方法eval"></a>使用方法eval</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function sum(arr) &#123;</span><br><span class="line">    return eval(arr.join(&quot;+&quot;));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="移除数组中的元素（不直接修改原数组）"><a href="#移除数组中的元素（不直接修改原数组）" class="headerlink" title="移除数组中的元素（不直接修改原数组）"></a>移除数组中的元素（不直接修改原数组）</h4><p>题目描述：<br><strong>移除数组 arr 中的所有值与 item 相等的元素。不要直接修改数组 arr，结果返回新的数组</strong></p>
 <p>解决方案：</p>
-<h5 id="1-push方法"><a href="#1-push方法" class="headerlink" title="1.push方法"></a>1.push方法</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function remove(arr, item) &#123;</span><br><span class="line">    var a= [];</span><br><span class="line">    for(var i=0;i&lt;arr.length;i++) &#123;</span><br><span class="line">        if(arr[i] != item) &#123;</span><br><span class="line">            a.push(arr[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return a;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-<h5 id="2-splice方法"><a href="#2-splice方法" class="headerlink" title="2.splice方法"></a>2.splice方法</h5><blockquote>
+<h5 id="push方法"><a href="#push方法" class="headerlink" title="push方法"></a>push方法</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function remove(arr, item) &#123;</span><br><span class="line">    var a= [];</span><br><span class="line">    for(var i=0;i&lt;arr.length;i++) &#123;</span><br><span class="line">        if(arr[i] != item) &#123;</span><br><span class="line">            a.push(arr[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return a;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h5 id="splice方法"><a href="#splice方法" class="headerlink" title="splice方法"></a>splice方法</h5><blockquote>
 <p>语法：arrayObject.splice(index,howmany,item1,…..,itemX)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function remove(arr, item) &#123;</span><br><span class="line">    var a = arr.slice(0);</span><br><span class="line">    for(var i=0;i&lt;a.length;i++) &#123;</span><br><span class="line">        if(a[i] == item) &#123;</span><br><span class="line">            a.splice(i,1);</span><br><span class="line">            i--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return a;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></p>
 </blockquote>
-<h5 id="3-Array-prototype-filter"><a href="#3-Array-prototype-filter" class="headerlink" title="3.Array.prototype.filter()"></a>3.Array.prototype.filter()</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function remove(arr,item)&#123;</span><br><span class="line">    return arr.filter(function(ele)&#123;</span><br><span class="line">         return ele != item;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="四、移除数组中的元素（直接修改原数组）"><a href="#四、移除数组中的元素（直接修改原数组）" class="headerlink" title="四、移除数组中的元素（直接修改原数组）"></a>四、移除数组中的元素（直接修改原数组）</h4><p>题目描述：<br><strong>移除数组 arr 中的所有值与 item 相等的元素，直接在给定的 arr 数组上进行操作，并将结果返回</strong></p>
+<h5 id="Array-prototype-filter"><a href="#Array-prototype-filter" class="headerlink" title="Array.prototype.filter()"></a>Array.prototype.filter()</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function remove(arr,item)&#123;</span><br><span class="line">    return arr.filter(function(ele)&#123;</span><br><span class="line">         return ele != item;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="移除数组中的元素（直接修改原数组）"><a href="#移除数组中的元素（直接修改原数组）" class="headerlink" title="移除数组中的元素（直接修改原数组）"></a>移除数组中的元素（直接修改原数组）</h4><p>题目描述：<br><strong>移除数组 arr 中的所有值与 item 相等的元素，直接在给定的 arr 数组上进行操作，并将结果返回</strong></p>
 <p>解决方案：</p>
-<h5 id="1-splice方法"><a href="#1-splice方法" class="headerlink" title="1.splice方法"></a>1.splice方法</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function removeWithoutCopy(arr, item) &#123;</span><br><span class="line">    for(var i =0;i&lt;arr.length;i++)&#123;</span><br><span class="line">        if(arr[i] == item)&#123;</span><br><span class="line">            arr.splice(i,1);</span><br><span class="line">            i--</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return arr</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="五、数组末尾添加元素（不直接修改原数组）"><a href="#五、数组末尾添加元素（不直接修改原数组）" class="headerlink" title="五、数组末尾添加元素（不直接修改原数组）"></a>五、数组末尾添加元素（不直接修改原数组）</h4><p>题目描述：<br><strong>在数组 arr 末尾添加元素 item。不要直接修改数组 arr，结果返回新的数组</strong></p>
+<h5 id="splice方法-1"><a href="#splice方法-1" class="headerlink" title="splice方法"></a>splice方法</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function removeWithoutCopy(arr, item) &#123;</span><br><span class="line">    for(var i =0;i&lt;arr.length;i++)&#123;</span><br><span class="line">        if(arr[i] == item)&#123;</span><br><span class="line">            arr.splice(i,1);</span><br><span class="line">            i--</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return arr</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="数组末尾添加元素（不直接修改原数组）"><a href="#数组末尾添加元素（不直接修改原数组）" class="headerlink" title="数组末尾添加元素（不直接修改原数组）"></a>数组末尾添加元素（不直接修改原数组）</h4><p>题目描述：<br><strong>在数组 arr 末尾添加元素 item。不要直接修改数组 arr，结果返回新的数组</strong></p>
 <p>解决方案：</p>
-<h5 id="1-普通的迭代拷贝"><a href="#1-普通的迭代拷贝" class="headerlink" title="1.普通的迭代拷贝"></a>1.普通的迭代拷贝</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function append(arr, item) &#123;</span><br><span class="line">    var length = arr.length,newArr = [];</span><br><span class="line">    for(var i=0;i&lt;length;i++)&#123;</span><br><span class="line">        newArr.push(arr[i]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    newArr.push(item);</span><br><span class="line">    return newArr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="2-使用slice浅拷贝-push组合"><a href="#2-使用slice浅拷贝-push组合" class="headerlink" title="2.使用slice浅拷贝+push组合"></a>2.使用slice浅拷贝+push组合</h5><pre><code>function append(arr, item) {
+<h5 id="普通的迭代拷贝"><a href="#普通的迭代拷贝" class="headerlink" title="普通的迭代拷贝"></a>普通的迭代拷贝</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function append(arr, item) &#123;</span><br><span class="line">    var length = arr.length,newArr = [];</span><br><span class="line">    for(var i=0;i&lt;length;i++)&#123;</span><br><span class="line">        newArr.push(arr[i]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    newArr.push(item);</span><br><span class="line">    return newArr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="使用slice浅拷贝-push组合"><a href="#使用slice浅拷贝-push组合" class="headerlink" title="使用slice浅拷贝+push组合"></a>使用slice浅拷贝+push组合</h5><pre><code>function append(arr, item) {
     var newArr = arr.slice(0);
     newArr.push(item);
     return newArr;
 }
-</code></pre><h5 id="3-使用concat将传入的数组或非数组值与原数组合并-组成一个新的数组并返回"><a href="#3-使用concat将传入的数组或非数组值与原数组合并-组成一个新的数组并返回" class="headerlink" title="3.使用concat将传入的数组或非数组值与原数组合并,组成一个新的数组并返回"></a>3.使用concat将传入的数组或非数组值与原数组合并,组成一个新的数组并返回</h5><pre><code>function append(arr, item) {
+</code></pre><h5 id="使用concat将传入的数组或非数组值与原数组合并-组成一个新的数组并返回"><a href="#使用concat将传入的数组或非数组值与原数组合并-组成一个新的数组并返回" class="headerlink" title="使用concat将传入的数组或非数组值与原数组合并,组成一个新的数组并返回"></a>使用concat将传入的数组或非数组值与原数组合并,组成一个新的数组并返回</h5><pre><code>function append(arr, item) {
     return arr.concat(item);
 }
-</code></pre><h4 id="六、数组开头添加元素（不直接修改原数组）"><a href="#六、数组开头添加元素（不直接修改原数组）" class="headerlink" title="六、数组开头添加元素（不直接修改原数组）"></a>六、数组开头添加元素（不直接修改原数组）</h4><p> 题目描述：<br><strong>在数组 arr 开头添加元素 item。不要直接修改数组 arr，结果返回新的数组</strong></p>
+</code></pre><h4 id="数组开头添加元素（不直接修改原数组）"><a href="#数组开头添加元素（不直接修改原数组）" class="headerlink" title="数组开头添加元素（不直接修改原数组）"></a>数组开头添加元素（不直接修改原数组）</h4><p> 题目描述：<br><strong>在数组 arr 开头添加元素 item。不要直接修改数组 arr，结果返回新的数组</strong></p>
 <p>解决方案：</p>
-<h5 id="1-使用concat"><a href="#1-使用concat" class="headerlink" title="1.使用concat"></a>1.使用concat</h5><pre><code>function prepend(arr, item) {
+<h5 id="使用concat"><a href="#使用concat" class="headerlink" title="使用concat"></a>使用concat</h5><pre><code>function prepend(arr, item) {
     return [item].concat(arr);
 }
-</code></pre><h5 id="2-使用push-apply组合"><a href="#2-使用push-apply组合" class="headerlink" title="2.使用push.apply组合"></a>2.使用push.apply组合</h5><pre><code>function prepend(arr, item) {
+</code></pre><h5 id="使用push-apply组合"><a href="#使用push-apply组合" class="headerlink" title="使用push.apply组合"></a>使用push.apply组合</h5><pre><code>function prepend(arr, item) {
     var newarr = [item];
     Array.prototype.push.apply(newarr,arr);
     return newarr;
 }
-</code></pre><h5 id="3-使用slice-unshift-splice"><a href="#3-使用slice-unshift-splice" class="headerlink" title="3.使用slice+unshift/splice"></a>3.使用slice+unshift/splice</h5><pre><code>function prepend(arr, item) {
+</code></pre><h5 id="使用slice-unshift-splice"><a href="#使用slice-unshift-splice" class="headerlink" title="使用slice+unshift/splice"></a>使用slice+unshift/splice</h5><pre><code>function prepend(arr, item) {
     var newarr = arr.slice(0);
     newarr.unshift(item); // newarr.splice(0,0,item);
     return newarr;
 }
-</code></pre><h5 id="4-使用join-split-unshift-splice组合"><a href="#4-使用join-split-unshift-splice组合" class="headerlink" title="4.使用join+split+unshift/splice组合"></a>4.使用join+split+unshift/splice组合</h5><pre><code>function prepend(arr, item) {
+</code></pre><h5 id="使用join-split-unshift-splice组合"><a href="#使用join-split-unshift-splice组合" class="headerlink" title="使用join+split+unshift/splice组合"></a>使用join+split+unshift/splice组合</h5><pre><code>function prepend(arr, item) {
     var newarr = arr.join().split(&apos;,&apos;);
     newarr.unshift(item);
     return newarr;
 }
-</code></pre><h5 id="5-普通的迭代拷贝"><a href="#5-普通的迭代拷贝" class="headerlink" title="5.普通的迭代拷贝"></a>5.普通的迭代拷贝</h5><pre><code>function prepend(arr, item) {
+</code></pre><h5 id="普通的迭代拷贝-1"><a href="#普通的迭代拷贝-1" class="headerlink" title="普通的迭代拷贝"></a>普通的迭代拷贝</h5><pre><code>function prepend(arr, item) {
     var newarr = [];
     for(var i =0;i&lt;arr.length;i++){
         newarr.push(arr[i]);
@@ -420,23 +420,23 @@
     newarr.unshift(item);
     return newarr;
 }
-</code></pre><h4 id="七、数组index处添加元素"><a href="#七、数组index处添加元素" class="headerlink" title="七、数组index处添加元素"></a>七、数组index处添加元素</h4><p>   题目描述：<br><strong>在数组 arr 的 index 处添加元素 item。不要直接修改数组 arr，结果返回新的数组</strong></p>
+</code></pre><h4 id="数组index处添加元素"><a href="#数组index处添加元素" class="headerlink" title="数组index处添加元素"></a>数组index处添加元素</h4><p>   题目描述：<br><strong>在数组 arr 的 index 处添加元素 item。不要直接修改数组 arr，结果返回新的数组</strong></p>
 <p>解决方案：</p>
-<h5 id="1-利用slice-concat"><a href="#1-利用slice-concat" class="headerlink" title="1.利用slice+concat"></a>1.利用slice+concat</h5><pre><code>function insert(arr, item, index) {
+<h5 id="利用slice-concat"><a href="#利用slice-concat" class="headerlink" title="利用slice+concat"></a>利用slice+concat</h5><pre><code>function insert(arr, item, index) {
     return arr.slice(0,index).concat(item,arr.slice(index));
 }
-</code></pre><h5 id="2-利用concat-splice"><a href="#2-利用concat-splice" class="headerlink" title="2.利用concat +splice"></a>2.利用concat +splice</h5><pre><code>function insert(arr, item, index) {
+</code></pre><h5 id="利用concat-splice"><a href="#利用concat-splice" class="headerlink" title="利用concat +splice"></a>利用concat +splice</h5><pre><code>function insert(arr, item, index) {
     var newarr = arr.concat();
     newarr.splice(index,0,item);
     return newarr;
 }
-</code></pre><h5 id="3-利用push-apply-splice"><a href="#3-利用push-apply-splice" class="headerlink" title="3.利用push.apply+splice"></a>3.利用push.apply+splice</h5><pre><code>function insert(arr, item, index) {
+</code></pre><h5 id="利用push-apply-splice"><a href="#利用push-apply-splice" class="headerlink" title="利用push.apply+splice"></a>利用push.apply+splice</h5><pre><code>function insert(arr, item, index) {
     var newArr=[];
     [].push.apply(newArr, arr);
     newArr.splice(index,0,item);
     return newArr;
 }
-</code></pre><h5 id="4-普通的迭代拷贝"><a href="#4-普通的迭代拷贝" class="headerlink" title="4.普通的迭代拷贝"></a>4.普通的迭代拷贝</h5><pre><code>function insert(arr, item, index) {
+</code></pre><h5 id="普通的迭代拷贝-2"><a href="#普通的迭代拷贝-2" class="headerlink" title="普通的迭代拷贝"></a>普通的迭代拷贝</h5><pre><code>function insert(arr, item, index) {
     var newArr=[];
     for(var i=0;i&lt;arr.length;i++){
         newArr.push(arr[i]);
@@ -444,90 +444,90 @@
     newArr.splice(index,0,item);
     return newArr;
 }
-</code></pre><h4 id="八、删除数组第一个元素"><a href="#八、删除数组第一个元素" class="headerlink" title="八、删除数组第一个元素"></a>八、删除数组第一个元素</h4><p> 题目描述：<br><strong>删除数组 arr 第一个元素。不要直接修改数组 arr，结果返回新的数组</strong></p>
+</code></pre><h4 id="删除数组第一个元素"><a href="#删除数组第一个元素" class="headerlink" title="删除数组第一个元素"></a>删除数组第一个元素</h4><p> 题目描述：<br><strong>删除数组 arr 第一个元素。不要直接修改数组 arr，结果返回新的数组</strong></p>
 <p>解决方案：</p>
-<h5 id="1-利用slice"><a href="#1-利用slice" class="headerlink" title="1.利用slice"></a>1.利用slice</h5><pre><code>function curtail(arr) {
+<h5 id="利用slice"><a href="#利用slice" class="headerlink" title="利用slice"></a>利用slice</h5><pre><code>function curtail(arr) {
     return arr.slice(1);
 }   
-</code></pre><h5 id="2-利用filter"><a href="#2-利用filter" class="headerlink" title="2.利用filter"></a>2.利用filter</h5><pre><code>function curtail(arr) {
+</code></pre><h5 id="利用filter"><a href="#利用filter" class="headerlink" title="利用filter"></a>利用filter</h5><pre><code>function curtail(arr) {
     return arr.filter(function(v,i){
         return i !==0;
     })
 }
-</code></pre><h5 id="3-利用push-apply-shift"><a href="#3-利用push-apply-shift" class="headerlink" title="3.利用push.apply+shift"></a>3.利用push.apply+shift</h5><pre><code> function curtail(arr) {
+</code></pre><h5 id="利用push-apply-shift"><a href="#利用push-apply-shift" class="headerlink" title="利用push.apply+shift"></a>利用push.apply+shift</h5><pre><code> function curtail(arr) {
     var newArr=[];
     [].push.apply(newArr, arr);
     newArr.shift();
     return newArr;
 }
-</code></pre><h5 id="4-利用join-split-shift-注意：数据类型会变成字符型"><a href="#4-利用join-split-shift-注意：数据类型会变成字符型" class="headerlink" title="4.利用join+split+shift    注意：数据类型会变成字符型"></a>4.利用join+split+shift    注意：数据类型会变成字符型</h5><pre><code> function curtail(arr) {
+</code></pre><h5 id="利用join-split-shift-注意：数据类型会变成字符型"><a href="#利用join-split-shift-注意：数据类型会变成字符型" class="headerlink" title="利用join+split+shift    注意：数据类型会变成字符型"></a>利用join+split+shift    注意：数据类型会变成字符型</h5><pre><code> function curtail(arr) {
     var newArr = arr.join().split(&apos;,&apos;);
     newArr.shift();
     return newArr;
 }
-</code></pre><h5 id="4-利用concat-shift"><a href="#4-利用concat-shift" class="headerlink" title="4.利用concat+shift"></a>4.利用concat+shift</h5><pre><code> function curtail(arr) {
+</code></pre><h5 id="利用concat-shift"><a href="#利用concat-shift" class="headerlink" title="利用concat+shift"></a>利用concat+shift</h5><pre><code> function curtail(arr) {
     var newArr = arr.concat();
     newArr.shift();
     return newArr;
 }
-</code></pre><h5 id="5-普通的迭代拷贝-1"><a href="#5-普通的迭代拷贝-1" class="headerlink" title="5.普通的迭代拷贝"></a>5.普通的迭代拷贝</h5><pre><code>function curtail(arr) {
+</code></pre><h5 id="普通的迭代拷贝-3"><a href="#普通的迭代拷贝-3" class="headerlink" title="普通的迭代拷贝"></a>普通的迭代拷贝</h5><pre><code>function curtail(arr) {
     var newArr=[];
     for(var i=1;i&lt;arr.length;i++){
         newArr.push(arr[i]);
     }
     return newArr;
 }
-</code></pre><h4 id="九、删除数组最后一个元素"><a href="#九、删除数组最后一个元素" class="headerlink" title="九、删除数组最后一个元素"></a>九、删除数组最后一个元素</h4><p> 题目描述：<br><strong>删除数组 arr 最后一个元素。不要直接修改数组 arr，结果返回新的数组</strong></p>
+</code></pre><h4 id="删除数组最后一个元素"><a href="#删除数组最后一个元素" class="headerlink" title="删除数组最后一个元素"></a>删除数组最后一个元素</h4><p> 题目描述：<br><strong>删除数组 arr 最后一个元素。不要直接修改数组 arr，结果返回新的数组</strong></p>
 <p>解决方案：</p>
-<h5 id="1-利用slice-1"><a href="#1-利用slice-1" class="headerlink" title="1.利用slice"></a>1.利用slice</h5><pre><code>function truncate(arr) {
+<h5 id="利用slice-1"><a href="#利用slice-1" class="headerlink" title="利用slice"></a>利用slice</h5><pre><code>function truncate(arr) {
     return arr.slice(0,-1);
 }
-</code></pre><h5 id="2-利用filter-1"><a href="#2-利用filter-1" class="headerlink" title="2.利用filter"></a>2.利用filter</h5><pre><code>function truncate(arr) {
+</code></pre><h5 id="利用filter-1"><a href="#利用filter-1" class="headerlink" title="利用filter"></a>利用filter</h5><pre><code>function truncate(arr) {
     return arr.filter(function(v,i){
         return i !== arr.length-1;
     })
 }
-</code></pre><h5 id="3-利用push-apply-pop"><a href="#3-利用push-apply-pop" class="headerlink" title="3.利用push.apply+pop"></a>3.利用push.apply+pop</h5><pre><code>function truncate(arr) {
+</code></pre><h5 id="利用push-apply-pop"><a href="#利用push-apply-pop" class="headerlink" title="利用push.apply+pop"></a>利用push.apply+pop</h5><pre><code>function truncate(arr) {
     var newArr=[];
     [].push.apply(newArr, arr);
     newArr.pop();
     return newArr;
 }
-</code></pre><h5 id="4-利用join-split-pop"><a href="#4-利用join-split-pop" class="headerlink" title="4.利用join+split+pop"></a>4.利用join+split+pop</h5><pre><code>function truncate(arr) {
+</code></pre><h5 id="利用join-split-pop"><a href="#利用join-split-pop" class="headerlink" title="利用join+split+pop"></a>利用join+split+pop</h5><pre><code>function truncate(arr) {
     var newArr = arr.join().split(&apos;,&apos;);
     newArr.pop();
     return newArr;
 }
-</code></pre><h5 id="5-利用concat-pop"><a href="#5-利用concat-pop" class="headerlink" title="5.利用concat+pop"></a>5.利用concat+pop</h5><pre><code>function truncate(arr) {
+</code></pre><h5 id="利用concat-pop"><a href="#利用concat-pop" class="headerlink" title="利用concat+pop"></a>利用concat+pop</h5><pre><code>function truncate(arr) {
     var newArr = arr.concat();
     newArr.pop();
     return newArr;
 }
-</code></pre><h5 id="6-普通的迭代拷贝"><a href="#6-普通的迭代拷贝" class="headerlink" title="6.普通的迭代拷贝"></a>6.普通的迭代拷贝</h5><pre><code>function truncate(arr, item) {
+</code></pre><h5 id="普通的迭代拷贝-4"><a href="#普通的迭代拷贝-4" class="headerlink" title="普通的迭代拷贝"></a>普通的迭代拷贝</h5><pre><code>function truncate(arr, item) {
     var newArr=[];
     for(var i=0;i&lt;arr.length-1;i++){
         newArr.push(arr[i]);
     }
     return newArr;
 }
-</code></pre><h4 id="十、数组合并"><a href="#十、数组合并" class="headerlink" title="十、数组合并"></a>十、数组合并</h4><p> 题目描述：<br><strong>合并数组 arr1 和数组 arr2。不要直接修改数组 arr，结果返回新的数组</strong></p>
+</code></pre><h4 id="数组合并"><a href="#数组合并" class="headerlink" title="数组合并"></a>数组合并</h4><p> 题目描述：<br><strong>合并数组 arr1 和数组 arr2。不要直接修改数组 arr，结果返回新的数组</strong></p>
 <p>解决方案：</p>
-<h5 id="1-利用concat"><a href="#1-利用concat" class="headerlink" title="1.利用concat"></a>1.利用concat</h5><pre><code>function concat(arr1, arr2) {
+<h5 id="利用concat"><a href="#利用concat" class="headerlink" title="利用concat"></a>利用concat</h5><pre><code>function concat(arr1, arr2) {
     return arr1.concat(arr2);
 }
-</code></pre><h5 id="2-利用slice-push-apply"><a href="#2-利用slice-push-apply" class="headerlink" title="2.利用slice+push.apply"></a>2.利用slice+push.apply</h5><pre><code> function concat(arr1, arr2) {
+</code></pre><h5 id="利用slice-push-apply"><a href="#利用slice-push-apply" class="headerlink" title="利用slice+push.apply"></a>利用slice+push.apply</h5><pre><code> function concat(arr1, arr2) {
     var newarr = arr1.slice(0);
     [].push.apply(newarr,arr2);
     return newarr;
 }
-</code></pre><h5 id="3-利用slice-push"><a href="#3-利用slice-push" class="headerlink" title="3.利用slice+push"></a>3.利用slice+push</h5><pre><code> function concat(arr1, arr2) {
+</code></pre><h5 id="利用slice-push"><a href="#利用slice-push" class="headerlink" title="利用slice+push"></a>利用slice+push</h5><pre><code> function concat(arr1, arr2) {
     var newArr=arr1.slice(0);
     for(var i=0;i&lt;arr2.length;i++){
         newArr.push(arr2[i]);
     }
     return newArr;
 }
-</code></pre><h5 id="4-普通的迭代拷贝-1"><a href="#4-普通的迭代拷贝-1" class="headerlink" title="4.普通的迭代拷贝"></a>4.普通的迭代拷贝</h5><pre><code> function concat(arr1, arr2) {
+</code></pre><h5 id="普通的迭代拷贝-5"><a href="#普通的迭代拷贝-5" class="headerlink" title="普通的迭代拷贝"></a>普通的迭代拷贝</h5><pre><code> function concat(arr1, arr2) {
     var newArr=[];
     for(var i=0;i&lt;arr1.length;i++){
         newArr.push(arr1[i]);
@@ -676,13 +676,13 @@
             <div class="links-of-author motion-element">
                 
                   <span class="links-of-author-item">
-                    <a href="https://github.com/yourname" target="_blank" title="GitHub">
+                    <a href="https://github.com/Echogithu" target="_blank" title="GitHub">
                       
                         <i class="fa fa-fw fa-github"></i>GitHub</a>
                   </span>
                 
                   <span class="links-of-author-item">
-                    <a href="mailto:yourname@gmail.com" target="_blank" title="E-Mail">
+                    <a href="13433680844@163.com" target="_blank" title="E-Mail">
                       
                         <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
                   </span>
@@ -711,7 +711,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、查找数组中元素位置"><span class="nav-number">1.</span> <span class="nav-text">一、查找数组中元素位置</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-indexOf-方法返回在数组中可以找到给定元素的第一个索引"><span class="nav-number">1.1.</span> <span class="nav-text">1. indexOf()方法返回在数组中可以找到给定元素的第一个索引</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-如果浏览器不支持indexOf的方案"><span class="nav-number">1.2.</span> <span class="nav-text">2. 如果浏览器不支持indexOf的方案</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、计算数组中所有元素的总和"><span class="nav-number">2.</span> <span class="nav-text">二、计算数组中所有元素的总和</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-普通的遍历求值"><span class="nav-number">2.1.</span> <span class="nav-text">1.普通的遍历求值</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-使用forEach遍历"><span class="nav-number">2.2.</span> <span class="nav-text">2.使用forEach遍历</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-使用累加方法reduce"><span class="nav-number">2.3.</span> <span class="nav-text">3.使用累加方法reduce</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-使用方法eval"><span class="nav-number">2.4.</span> <span class="nav-text">4.使用方法eval</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三、移除数组中的元素（不直接修改原数组）"><span class="nav-number">3.</span> <span class="nav-text">三、移除数组中的元素（不直接修改原数组）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-push方法"><span class="nav-number">3.1.</span> <span class="nav-text">1.push方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-splice方法"><span class="nav-number">3.2.</span> <span class="nav-text">2.splice方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-Array-prototype-filter"><span class="nav-number">3.3.</span> <span class="nav-text">3.Array.prototype.filter()</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四、移除数组中的元素（直接修改原数组）"><span class="nav-number">4.</span> <span class="nav-text">四、移除数组中的元素（直接修改原数组）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-splice方法"><span class="nav-number">4.1.</span> <span class="nav-text">1.splice方法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#五、数组末尾添加元素（不直接修改原数组）"><span class="nav-number">5.</span> <span class="nav-text">五、数组末尾添加元素（不直接修改原数组）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-普通的迭代拷贝"><span class="nav-number">5.1.</span> <span class="nav-text">1.普通的迭代拷贝</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-使用slice浅拷贝-push组合"><span class="nav-number">5.2.</span> <span class="nav-text">2.使用slice浅拷贝+push组合</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-使用concat将传入的数组或非数组值与原数组合并-组成一个新的数组并返回"><span class="nav-number">5.3.</span> <span class="nav-text">3.使用concat将传入的数组或非数组值与原数组合并,组成一个新的数组并返回</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#六、数组开头添加元素（不直接修改原数组）"><span class="nav-number">6.</span> <span class="nav-text">六、数组开头添加元素（不直接修改原数组）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-使用concat"><span class="nav-number">6.1.</span> <span class="nav-text">1.使用concat</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-使用push-apply组合"><span class="nav-number">6.2.</span> <span class="nav-text">2.使用push.apply组合</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-使用slice-unshift-splice"><span class="nav-number">6.3.</span> <span class="nav-text">3.使用slice+unshift/splice</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-使用join-split-unshift-splice组合"><span class="nav-number">6.4.</span> <span class="nav-text">4.使用join+split+unshift/splice组合</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-普通的迭代拷贝"><span class="nav-number">6.5.</span> <span class="nav-text">5.普通的迭代拷贝</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#七、数组index处添加元素"><span class="nav-number">7.</span> <span class="nav-text">七、数组index处添加元素</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-利用slice-concat"><span class="nav-number">7.1.</span> <span class="nav-text">1.利用slice+concat</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-利用concat-splice"><span class="nav-number">7.2.</span> <span class="nav-text">2.利用concat +splice</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-利用push-apply-splice"><span class="nav-number">7.3.</span> <span class="nav-text">3.利用push.apply+splice</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-普通的迭代拷贝"><span class="nav-number">7.4.</span> <span class="nav-text">4.普通的迭代拷贝</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#八、删除数组第一个元素"><span class="nav-number">8.</span> <span class="nav-text">八、删除数组第一个元素</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-利用slice"><span class="nav-number">8.1.</span> <span class="nav-text">1.利用slice</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-利用filter"><span class="nav-number">8.2.</span> <span class="nav-text">2.利用filter</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-利用push-apply-shift"><span class="nav-number">8.3.</span> <span class="nav-text">3.利用push.apply+shift</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-利用join-split-shift-注意：数据类型会变成字符型"><span class="nav-number">8.4.</span> <span class="nav-text">4.利用join+split+shift    注意：数据类型会变成字符型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-利用concat-shift"><span class="nav-number">8.5.</span> <span class="nav-text">4.利用concat+shift</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-普通的迭代拷贝-1"><span class="nav-number">8.6.</span> <span class="nav-text">5.普通的迭代拷贝</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#九、删除数组最后一个元素"><span class="nav-number">9.</span> <span class="nav-text">九、删除数组最后一个元素</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-利用slice-1"><span class="nav-number">9.1.</span> <span class="nav-text">1.利用slice</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-利用filter-1"><span class="nav-number">9.2.</span> <span class="nav-text">2.利用filter</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-利用push-apply-pop"><span class="nav-number">9.3.</span> <span class="nav-text">3.利用push.apply+pop</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-利用join-split-pop"><span class="nav-number">9.4.</span> <span class="nav-text">4.利用join+split+pop</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-利用concat-pop"><span class="nav-number">9.5.</span> <span class="nav-text">5.利用concat+pop</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-普通的迭代拷贝"><span class="nav-number">9.6.</span> <span class="nav-text">6.普通的迭代拷贝</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#十、数组合并"><span class="nav-number">10.</span> <span class="nav-text">十、数组合并</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-利用concat"><span class="nav-number">10.1.</span> <span class="nav-text">1.利用concat</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-利用slice-push-apply"><span class="nav-number">10.2.</span> <span class="nav-text">2.利用slice+push.apply</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-利用slice-push"><span class="nav-number">10.3.</span> <span class="nav-text">3.利用slice+push</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-普通的迭代拷贝-1"><span class="nav-number">10.4.</span> <span class="nav-text">4.普通的迭代拷贝</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#查找数组中元素位置"><span class="nav-number">1.</span> <span class="nav-text">查找数组中元素位置</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#indexOf-方法返回在数组中可以找到给定元素的第一个索引"><span class="nav-number">1.1.</span> <span class="nav-text">indexOf()方法返回在数组中可以找到给定元素的第一个索引</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#如果浏览器不支持indexOf的方案"><span class="nav-number">1.2.</span> <span class="nav-text">如果浏览器不支持indexOf的方案</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#计算数组中所有元素的总和"><span class="nav-number">2.</span> <span class="nav-text">计算数组中所有元素的总和</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#普通的遍历求值"><span class="nav-number">2.1.</span> <span class="nav-text">普通的遍历求值</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#使用forEach遍历"><span class="nav-number">2.2.</span> <span class="nav-text">使用forEach遍历</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#使用累加方法reduce"><span class="nav-number">2.3.</span> <span class="nav-text">使用累加方法reduce</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#使用方法eval"><span class="nav-number">2.4.</span> <span class="nav-text">使用方法eval</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#移除数组中的元素（不直接修改原数组）"><span class="nav-number">3.</span> <span class="nav-text">移除数组中的元素（不直接修改原数组）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#push方法"><span class="nav-number">3.1.</span> <span class="nav-text">push方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#splice方法"><span class="nav-number">3.2.</span> <span class="nav-text">splice方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Array-prototype-filter"><span class="nav-number">3.3.</span> <span class="nav-text">Array.prototype.filter()</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#移除数组中的元素（直接修改原数组）"><span class="nav-number">4.</span> <span class="nav-text">移除数组中的元素（直接修改原数组）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#splice方法-1"><span class="nav-number">4.1.</span> <span class="nav-text">splice方法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数组末尾添加元素（不直接修改原数组）"><span class="nav-number">5.</span> <span class="nav-text">数组末尾添加元素（不直接修改原数组）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#普通的迭代拷贝"><span class="nav-number">5.1.</span> <span class="nav-text">普通的迭代拷贝</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#使用slice浅拷贝-push组合"><span class="nav-number">5.2.</span> <span class="nav-text">使用slice浅拷贝+push组合</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#使用concat将传入的数组或非数组值与原数组合并-组成一个新的数组并返回"><span class="nav-number">5.3.</span> <span class="nav-text">使用concat将传入的数组或非数组值与原数组合并,组成一个新的数组并返回</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数组开头添加元素（不直接修改原数组）"><span class="nav-number">6.</span> <span class="nav-text">数组开头添加元素（不直接修改原数组）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#使用concat"><span class="nav-number">6.1.</span> <span class="nav-text">使用concat</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#使用push-apply组合"><span class="nav-number">6.2.</span> <span class="nav-text">使用push.apply组合</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#使用slice-unshift-splice"><span class="nav-number">6.3.</span> <span class="nav-text">使用slice+unshift/splice</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#使用join-split-unshift-splice组合"><span class="nav-number">6.4.</span> <span class="nav-text">使用join+split+unshift/splice组合</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#普通的迭代拷贝-1"><span class="nav-number">6.5.</span> <span class="nav-text">普通的迭代拷贝</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数组index处添加元素"><span class="nav-number">7.</span> <span class="nav-text">数组index处添加元素</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#利用slice-concat"><span class="nav-number">7.1.</span> <span class="nav-text">利用slice+concat</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#利用concat-splice"><span class="nav-number">7.2.</span> <span class="nav-text">利用concat +splice</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#利用push-apply-splice"><span class="nav-number">7.3.</span> <span class="nav-text">利用push.apply+splice</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#普通的迭代拷贝-2"><span class="nav-number">7.4.</span> <span class="nav-text">普通的迭代拷贝</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除数组第一个元素"><span class="nav-number">8.</span> <span class="nav-text">删除数组第一个元素</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#利用slice"><span class="nav-number">8.1.</span> <span class="nav-text">利用slice</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#利用filter"><span class="nav-number">8.2.</span> <span class="nav-text">利用filter</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#利用push-apply-shift"><span class="nav-number">8.3.</span> <span class="nav-text">利用push.apply+shift</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#利用join-split-shift-注意：数据类型会变成字符型"><span class="nav-number">8.4.</span> <span class="nav-text">利用join+split+shift    注意：数据类型会变成字符型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#利用concat-shift"><span class="nav-number">8.5.</span> <span class="nav-text">利用concat+shift</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#普通的迭代拷贝-3"><span class="nav-number">8.6.</span> <span class="nav-text">普通的迭代拷贝</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除数组最后一个元素"><span class="nav-number">9.</span> <span class="nav-text">删除数组最后一个元素</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#利用slice-1"><span class="nav-number">9.1.</span> <span class="nav-text">利用slice</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#利用filter-1"><span class="nav-number">9.2.</span> <span class="nav-text">利用filter</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#利用push-apply-pop"><span class="nav-number">9.3.</span> <span class="nav-text">利用push.apply+pop</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#利用join-split-pop"><span class="nav-number">9.4.</span> <span class="nav-text">利用join+split+pop</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#利用concat-pop"><span class="nav-number">9.5.</span> <span class="nav-text">利用concat+pop</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#普通的迭代拷贝-4"><span class="nav-number">9.6.</span> <span class="nav-text">普通的迭代拷贝</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数组合并"><span class="nav-number">10.</span> <span class="nav-text">数组合并</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#利用concat"><span class="nav-number">10.1.</span> <span class="nav-text">利用concat</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#利用slice-push-apply"><span class="nav-number">10.2.</span> <span class="nav-text">利用slice+push.apply</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#利用slice-push"><span class="nav-number">10.3.</span> <span class="nav-text">利用slice+push</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#普通的迭代拷贝-5"><span class="nav-number">10.4.</span> <span class="nav-text">普通的迭代拷贝</span></a></li></ol></li></ol></div>
             
 
           </div>
