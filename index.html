@@ -352,82 +352,18 @@
 
       
         
-          
-            <h3 id="作用域是什么"><a href="#作用域是什么" class="headerlink" title="作用域是什么"></a>作用域是什么</h3><h5 id="JS的编译原理"><a href="#JS的编译原理" class="headerlink" title="JS的编译原理"></a>JS的编译原理</h5><ul>
+          <h3 id="作用域是什么"><a href="#作用域是什么" class="headerlink" title="作用域是什么"></a>作用域是什么</h3><h5 id="JS的编译原理"><a href="#JS的编译原理" class="headerlink" title="JS的编译原理"></a>JS的编译原理</h5><ul>
 <li>编译器：负责词法分析、语法分析及代码生成</li>
 <li>引擎：负责整个JavaScript 程序的编译及执行过程</li>
 <li>作用域：负责收集并维护由所有声明的标识符(变量)组成的一系列查询,并实施一套非常严格的规则,确定当前执行的代码对这些标识符的访问权限。</li>
 </ul>
-<p><strong>举例说明</strong><br><code>var a = 2;</code></p>
-<ul>
-<li>编译器：<ul>
-<li>遇到var a,编译器会在当前作用域中声明一个变量(如 果之前没有声明过),，并命名为a。</li>
-<li>接着为引擎生成运行时所需要的代码，这些代码被用来处理 a = 2 这个赋值操作。</li>
-</ul>
-</li>
-<li>引擎：<ul>
-<li>在运行时引擎会在作用域中查找该变量,如果能够找到就会对它赋值。</li>
-</ul>
-</li>
-</ul>
-<h5 id="词法作用域"><a href="#词法作用域" class="headerlink" title="词法作用域"></a>词法作用域</h5><blockquote>
-<p>词法作用域是由你在写代码时将变量和块作用域写在哪里来决定的，因此当词法分析器处理代码时会保持作用域不变。</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">function foo(a) &#123;</span><br><span class="line">    var b = a * 2;</span><br><span class="line">    function bar(c) &#123;</span><br><span class="line">        console.log( a, b, c );</span><br><span class="line">    &#125;</span><br><span class="line">    bar( b * 3 );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foo( 2 ); // 2, 4, 12</span><br></pre></td></tr></table></figure>
-<p>在这个例子中有三个逐级嵌套的作用域:</p>
-<ul>
-<li>全局作用域：foo。</li>
-<li>foo所创建的作用域：a,bar和b。</li>
-<li>bar所创建的作用域：c。</li>
-</ul>
-<p><strong>欺骗词法：</strong></p>
-<ul>
-<li><strong>eval()</strong> ：可接受字符串为参数，并将其内容视为好像在书写就存在于程序中这个位置的代码。</li>
-<li><strong>with</strong>： 通常被当作重复引用同一个对象中的多个属性的快捷方式，可以不需要重复引用对象本身。</li>
-</ul>
-<h5 id="函数作用域"><a href="#函数作用域" class="headerlink" title="函数作用域"></a>函数作用域</h5><p>JavaScript具有基于函数的作用域。</p>
-<p><strong>举例说明</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">function foo(a)&#123;</span><br><span class="line">    var b = 2;</span><br><span class="line">    //一些代码</span><br><span class="line">    function bar()&#123;</span><br><span class="line">        // ...</span><br><span class="line">    &#125;</span><br><span class="line">    // 更多的代码</span><br><span class="line">    var a = 3;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>无论标识符 声明出现在作用域中的何处,这个标识符所代表的变量或函数都将附属于所处作用域的气泡。</p>
-<ul>
-<li>foo()作用域：a,b,c和bar。</li>
-<li>bar()作用域</li>
-<li>全局作用域：foo。</li>
-</ul>
-<blockquote>
-<p>函数作用域：属于这个函数的全部变量都可以在整个函数的范围内使用及复用。</p>
-</blockquote>
-<h5 id="块作用域"><a href="#块作用域" class="headerlink" title="块作用域"></a>块作用域</h5><p><strong>举例说明</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for (var i=0; i&lt;10; i++) &#123;</span><br><span class="line">    console.log(i)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>我们在for的头部定义了变量 i ，而且我们只想在for循环中使用 i ，而忽略了在 javascript 中 i 会绑定在全局变量(外部作用域)中。</p>
-<blockquote>
-<p>在 ES6 中我们推荐使用 let 来避免 i收到全局变量的污染。</p>
-</blockquote>
-<h3 id="作用域如何工作"><a href="#作用域如何工作" class="headerlink" title="作用域如何工作"></a>作用域如何工作</h3><h5 id="声明提前"><a href="#声明提前" class="headerlink" title="声明提前"></a>声明提前</h5><blockquote>
-<p>JavaScript编译的两个原则：①编译时声明 ②运行时赋值</p>
-</blockquote>
-<ul>
-<li>声明提升中，函数首先提升，再到变量。</li>
-<li>多次声明同名函数只有最后一个才会生效，前面的全部被覆盖。</li>
-</ul>
-<h5 id="变量查询——LHS与RHS"><a href="#变量查询——LHS与RHS" class="headerlink" title="变量查询——LHS与RHS"></a>变量查询——LHS与RHS</h5><blockquote>
-<p>JS中的变量查询方式分类：①左查询(LHS)②右查询(RHS)。</p>
-</blockquote>
-<ul>
-<li>左查询(LHS)是指当变量位于赋值操作符的左侧时将进行左查询,引擎将要查找到存储变量的容器本身，以便对变量进行赋值操作。</li>
-<li>右查询则是指当变量位于赋值操作符右侧时进行的查询操作，但更确切地说是所有「非左侧」查询都属于右查询。</li>
-<li><strong>总结:</strong> 左查询发生在赋值时，而右查询发生在引用变量时。</li>
-</ul>
-<h5 id="作用域嵌套"><a href="#作用域嵌套" class="headerlink" title="作用域嵌套"></a>作用域嵌套</h5><p>最外层的作用域是全局作用域，全局作用域中包含了许多函数作用域，而函数作用域内部又可以包含另一个函数作用域，由此形成了「作用域嵌套」。</p>
-<p><img src="/2019/04/19/JavaScript之作用域和闭包-一/Image.png" alt><br>作用域嵌套可以无限嵌套，但是为了可读性最好不要这么做。</p>
-<h5 id="运行时修改作用域"><a href="#运行时修改作用域" class="headerlink" title="运行时修改作用域"></a>运行时修改作用域</h5><ul>
-<li><p>eval(…)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function foo(str)&#123;</span><br><span class="line">    var a = 1;</span><br><span class="line">    eval(str);</span><br><span class="line">    console.log(b);</span><br><span class="line">&#125;</span><br><span class="line">foo(&apos;var b = 2;&apos;);// 2</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>with(…)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;</span><br><span class="line">    a:1,</span><br><span class="line">    b:2</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">function foo(obj)&#123;</span><br><span class="line">    with(obj)&#123;</span><br><span class="line">        console.log(a);</span><br><span class="line">        x = &apos;inside with&apos;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foo(obj); // 1</span><br><span class="line">console.log(x);//&apos;inside with&apos;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/04/19/JavaScript之作用域和闭包-一/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
