@@ -79,21 +79,21 @@
 
 
 
-<meta name="description" content="闭包什么是闭包 闭包是指有权访问另一个函数作用域中的变量的函数。  123456789function f1()&amp;#123;    var n =  1；    function f2()&amp;#123;        alert(n);   &amp;#125;   return f2;&amp;#125;var result = f1();result();//1 由于在Javascript语言中，只有函数内部的">
+<meta name="description" content="闭包什么是闭包 闭包是指有权访问另一个函数作用域中的变量的函数。">
 <meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript之作用域和闭包(二)">
 <meta property="og:url" content="http://yoursite.com/2019/04/21/JavaScript之作用域和闭包-二/index.html">
 <meta property="og:site_name" content="Echo">
-<meta property="og:description" content="闭包什么是闭包 闭包是指有权访问另一个函数作用域中的变量的函数。  123456789function f1()&amp;#123;    var n =  1；    function f2()&amp;#123;        alert(n);   &amp;#125;   return f2;&amp;#125;var result = f1();result();//1 由于在Javascript语言中，只有函数内部的">
+<meta property="og:description" content="闭包什么是闭包 闭包是指有权访问另一个函数作用域中的变量的函数。">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2019/04/21/JavaScript之作用域和闭包-二/1.png">
 <meta property="og:image" content="http://yoursite.com/2019/04/21/JavaScript之作用域和闭包-二/2.png">
 <meta property="og:image" content="http://yoursite.com/2019/04/21/JavaScript之作用域和闭包-二/3.png">
-<meta property="og:updated_time" content="2019-04-20T17:33:04.803Z">
+<meta property="og:updated_time" content="2019-04-20T17:39:36.066Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript之作用域和闭包(二)">
-<meta name="twitter:description" content="闭包什么是闭包 闭包是指有权访问另一个函数作用域中的变量的函数。  123456789function f1()&amp;#123;    var n =  1；    function f2()&amp;#123;        alert(n);   &amp;#125;   return f2;&amp;#125;var result = f1();result();//1 由于在Javascript语言中，只有函数内部的">
+<meta name="twitter:description" content="闭包什么是闭包 闭包是指有权访问另一个函数作用域中的变量的函数。">
 <meta name="twitter:image" content="http://yoursite.com/2019/04/21/JavaScript之作用域和闭包-二/1.png">
 
 
@@ -359,6 +359,7 @@
         <h3 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h3><h5 id="什么是闭包"><a href="#什么是闭包" class="headerlink" title="什么是闭包"></a>什么是闭包</h5><blockquote>
 <p>闭包是指有权访问另一个函数作用域中的变量的函数。</p>
 </blockquote>
+<a id="more"></a>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function f1()&#123;</span><br><span class="line">    var n =  1；</span><br><span class="line">    function f2()&#123;</span><br><span class="line">        alert(n);</span><br><span class="line">   &#125;</span><br><span class="line">   return f2;</span><br><span class="line">&#125;</span><br><span class="line">var result = f1();</span><br><span class="line">result();//1</span><br></pre></td></tr></table></figure>
 <p>由于在Javascript语言中，只有函数内部的子函数才能读取局部变量，因此可以把闭包简单理解成”定义在一个函数内部的函数”。</p>
 <h5 id="闭包功能"><a href="#闭包功能" class="headerlink" title="闭包功能"></a>闭包功能</h5><ol>
