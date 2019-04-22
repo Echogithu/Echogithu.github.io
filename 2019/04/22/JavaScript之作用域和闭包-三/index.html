@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="JavaScript,算法,">
+  <meta name="keywords" content="JavaScript,">
 
 
 
@@ -79,20 +79,18 @@
 
 
 
-<meta name="description" content="如果查找的数据有序的，二分查找算法更加高效。">
-<meta name="keywords" content="JavaScript,算法">
+<meta name="description" content="继续上一节，讲讲闭包。">
+<meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaScript之二分查找">
-<meta property="og:url" content="http://yoursite.com/2019/04/22/JavaScript之二分查找/index.html">
+<meta property="og:title" content="JavaScript之作用域和闭包(三)">
+<meta property="og:url" content="http://yoursite.com/2019/04/22/JavaScript之作用域和闭包-三/index.html">
 <meta property="og:site_name" content="Echo">
-<meta property="og:description" content="如果查找的数据有序的，二分查找算法更加高效。">
+<meta property="og:description" content="继续上一节，讲讲闭包。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/2019/04/22/JavaScript之二分查找/1.png">
-<meta property="og:updated_time" content="2019-04-22T06:13:09.773Z">
+<meta property="og:updated_time" content="2019-04-22T13:56:48.348Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JavaScript之二分查找">
-<meta name="twitter:description" content="如果查找的数据有序的，二分查找算法更加高效。">
-<meta name="twitter:image" content="http://yoursite.com/2019/04/22/JavaScript之二分查找/1.png">
+<meta name="twitter:title" content="JavaScript之作用域和闭包(三)">
+<meta name="twitter:description" content="继续上一节，讲讲闭包。">
 
 
 
@@ -122,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/04/22/JavaScript之二分查找/">
+  <link rel="canonical" href="http://yoursite.com/2019/04/22/JavaScript之作用域和闭包-三/">
 
 
 
 
 
-  <title>JavaScript之二分查找 | Echo</title>
+  <title>JavaScript之作用域和闭包(三) | Echo</title>
   
 
 
@@ -265,7 +263,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/22/JavaScript之二分查找/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/22/JavaScript之作用域和闭包-三/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Echo">
@@ -282,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">JavaScript之二分查找</h1>
+          <h1 class="post-title" itemprop="name headline">JavaScript之作用域和闭包(三)</h1>
         
 
         <div class="post-meta">
@@ -294,7 +292,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-22T14:07:17+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-22T21:53:31+08:00">
                 2019-04-22
               </time>
             
@@ -317,8 +315,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/算法/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
                   </a>
                 </span>
 
@@ -354,22 +352,34 @@
       
 
       
-        <p>如果查找的数据有序的，二分查找算法更加高效。</p>
+        <p>继续上一节，讲讲闭包。</p>
 <a id="more"></a>
-<h4 id="算法理解"><a href="#算法理解" class="headerlink" title="算法理解"></a>算法理解</h4><p>二分搜索算法有些类似于玩猜数字游戏，这个数字位于1~100之间，要猜的数字是由出题人决定的。我们每说一个数字，出题人就会说大了，小了还是对了。所以，第一次猜50是最佳策略，如果猜大了，我们就猜25，如果猜小了，我们就猜75。以此类推，每一次猜测，我们都选择最大值和最小值的中间值。我们把这个策略实现为二分搜索算法。</p>
-<p>二分搜索算法需要保证被搜索的数据是有序的，因此我们先用排序算法把数组的数据排序。</p>
-<h4 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h4><ol>
-<li>选择中间值</li>
-<li>如果选择的值是待搜索的值，算法结束并返回。</li>
-<li>如果待搜索值比选中值要小，则返回步骤1，并在选中值左边的子数组中寻找。</li>
-<li>如果待搜索值比选中值要大，则返回步骤1，并在选中值右边的子数组中寻找。</li>
+<h5 id="作用域闭包"><a href="#作用域闭包" class="headerlink" title="作用域闭包"></a>作用域闭包</h5><ol>
+<li>在自己定义的作用域以外的地方执行</li>
+<li>使用回调函数也是闭包</li>
 </ol>
-<h4 id="算法实现"><a href="#算法实现" class="headerlink" title="算法实现"></a>算法实现</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">//先排序</span><br><span class="line">function quickSort(arr)&#123;</span><br><span class="line">  if(arr.length == 0)&#123;</span><br><span class="line">    return [];</span><br><span class="line">  &#125;</span><br><span class="line">  var lesser = [];</span><br><span class="line">  var greater = [];</span><br><span class="line">  var pivot = arr[0];</span><br><span class="line">  for(var i=1;i&lt;arr.length;i++)&#123;</span><br><span class="line">    if(arr[i] &lt; pivot)&#123;</span><br><span class="line">      lesser.push(arr[i]);</span><br><span class="line">    &#125;else &#123;</span><br><span class="line">      greater.push(arr[i]);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  return quickSort(lesser).concat(pivot, quickSort(greater));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//二分搜索</span><br><span class="line">function binarySearch(arr,item)&#123;</span><br><span class="line">  var newArr = quickSort(arr);</span><br><span class="line"></span><br><span class="line">  var low = 0; //初始化左边界</span><br><span class="line">  var high = newArr.length-1;  //初始化右边界</span><br><span class="line">  var mid,element;</span><br><span class="line"></span><br><span class="line">  while (low &lt;= high) &#123;</span><br><span class="line">    mid = Math.floor((low + high)/2);   //计算中间元素坐标</span><br><span class="line">    element = newArr[mid];</span><br><span class="line">    if (element&lt;item) &#123;</span><br><span class="line">      low = mid +1;   //当目标值大于中间值时，调整左边界</span><br><span class="line">    &#125;else if(element&gt;item)&#123;</span><br><span class="line">      high = mid-1;   //当目标值小于中间值时，调整右边界</span><br><span class="line">    &#125;else &#123;</span><br><span class="line">      return item;   //找到返回</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return -1;   //未找到</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var flag = binarySearch([2, 6, 8, 11, 7], 1);</span><br><span class="line">console.log(flag)</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/04/22/JavaScript之二分查找/1.png" alt></p>
-<p>学习参考</p>
-<blockquote>
-<p>《前端JavaScript面试算法教程(10):二分搜索》<br>《数据结构与算法javascript描述》</p>
-</blockquote>
+<h5 id="循环与闭包"><a href="#循环与闭包" class="headerlink" title="循环与闭包"></a>循环与闭包</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">for(var i = 1; i &lt;= 3; i++)&#123;</span><br><span class="line">    setTimeout(function()&#123;</span><br><span class="line">        console.log(i)    //打印出 3 个 4，这里没有闭包</span><br><span class="line">    &#125;,1000)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>因为延迟函数会在循环结束时才执行。就算你setTimeout(…,0)，也会在循环完成时，输出3个4。</li>
+<li>内部匿名函数有着涵盖for循环的闭包，这3次调用匿名函数都是封闭在同一个作用域中，他们共享同一个i，只有一个i。</li>
+<li>如何让预期输出1，2，3呢？<br>1.<strong> IIFE立即执行函数可以形成一个块作用域。</strong><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function test()&#123;</span><br><span class="line">    for(var i = 1; i &lt;= 3; i++)&#123;</span><br><span class="line">      (function(i)&#123;    //这个形参 i 和外面的 i 不是同一个变量</span><br><span class="line">        setTimeout(function()&#123;</span><br><span class="line">            console.log(i)     //1,2,3，用立即执行函数，</span><br><span class="line">        &#125;,1000)</span><br><span class="line">    &#125;)(i)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">test()</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>这里setTimeout里面的i和立即执行函数的形参构成闭包，阻隔了与for循环的i形成闭包。</p>
+<p>2.<strong>用let声明</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function test()&#123;</span><br><span class="line">    for(let i = 1; i &lt;= 3; i++)&#123;</span><br><span class="line">        setTimeout(function()&#123;</span><br><span class="line">            console.log(i)    //1,2,3，用 let 声明变量，在循环的过程中不止一次的声明</span><br><span class="line">        &#125;,1000)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">test()</span><br></pre></td></tr></table></figure></p>
+<p>ES6中的const或者let，它们都可以构造一个块级作用域。const 定义常量，无法被修改。</p>
+<h5 id="模块中闭包"><a href="#模块中闭包" class="headerlink" title="模块中闭包"></a>模块中闭包</h5><p>模块中闭包需要具备两个条件：</p>
+<ol>
+<li>必须有外部的封闭函数，该函数至少被调用一次。</li>
+<li>封闭函数至少返回一个内部函数，形成闭包，并且可以修改和访问私有状态。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">var foo = function()&#123;</span><br><span class="line">  function a()&#123;</span><br><span class="line">    console.log(1)</span><br><span class="line">  &#125;</span><br><span class="line">  function b()&#123;</span><br><span class="line">    console.log(2)</span><br><span class="line">  &#125;</span><br><span class="line">  return &#123;</span><br><span class="line">    a:a,</span><br><span class="line">    b:b</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">var c = foo()</span><br><span class="line">c.a() //1</span><br></pre></td></tr></table></figure>
+<p>现在的模块机制</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// bar.js</span><br><span class="line">function hello(who) &#123;</span><br><span class="line">    return `hello $&#123;who&#125;`</span><br><span class="line">&#125;</span><br><span class="line">export hello</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">// foo.js</span><br><span class="line">// 仅导入hello()</span><br><span class="line">import hello from &apos;bar&apos;</span><br><span class="line">const name = &apos;jack&apos;function awesome () &#123;</span><br><span class="line">    console.log(hello(name))</span><br><span class="line">&#125;</span><br><span class="line">export awesome</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// baz.js</span><br><span class="line">// 导入完整模块module foo from &apos;foo&apos;module bar from &apos;bar&apos;</span><br><span class="line">console.log(bar.hello(&apos;john&apos;))</span><br><span class="line">foo.awesome()</span><br></pre></td></tr></table></figure>
+<p>这里模块文件中的内容同样被当做好像包含在作用域中的闭包一样处理。</p>
+<h5 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h5><p>关于闭包和作用域部分先讲到这里，这几天看了挺多资料，感觉写的内容还是有些乱，后续多写几篇博客，尝试如何更好做笔记，再重新回来整理吧。</p>
 
       
     </div>
@@ -389,8 +399,6 @@
           
             <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
           
-            <a href="/tags/算法/" rel="tag"># 算法</a>
-          
         </div>
       
 
@@ -402,8 +410,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/21/JavaScript之作用域和闭包-二/" rel="next" title="JavaScript之作用域和闭包(二)">
-                <i class="fa fa-chevron-left"></i> JavaScript之作用域和闭包(二)
+              <a href="/2019/04/22/JavaScript之二分查找/" rel="next" title="JavaScript之二分查找">
+                <i class="fa fa-chevron-left"></i> JavaScript之二分查找
               </a>
             
           </div>
@@ -411,10 +419,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/22/JavaScript之作用域和闭包-三/" rel="prev" title="JavaScript之作用域和闭包(三)">
-                JavaScript之作用域和闭包(三) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -564,7 +568,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#算法理解"><span class="nav-number">1.</span> <span class="nav-text">算法理解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法描述"><span class="nav-number">2.</span> <span class="nav-text">算法描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法实现"><span class="nav-number">3.</span> <span class="nav-text">算法实现</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#作用域闭包"><span class="nav-number">1.</span> <span class="nav-text">作用域闭包</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#循环与闭包"><span class="nav-number">2.</span> <span class="nav-text">循环与闭包</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#模块中闭包"><span class="nav-number">3.</span> <span class="nav-text">模块中闭包</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#结语"><span class="nav-number">4.</span> <span class="nav-text">结语</span></a></li></ol></div>
             
 
           </div>
