@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="JavaScript,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="学习目标 理解基本类型和引用类型的值 理解执行环境 理解垃圾收集">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《JavaScript高级程序设计》学习笔记之变量、作用域和内存问题">
+<meta property="og:url" content="http://yoursite.com/2019/04/24/《JavaScript高级程序设计》学习笔记之变量、作用域和内存问题/index.html">
+<meta property="og:site_name" content="Echo">
+<meta property="og:description" content="学习目标 理解基本类型和引用类型的值 理解执行环境 理解垃圾收集">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2019/04/24/《JavaScript高级程序设计》学习笔记之变量、作用域和内存问题/1.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/24/《JavaScript高级程序设计》学习笔记之变量、作用域和内存问题/2.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/24/《JavaScript高级程序设计》学习笔记之变量、作用域和内存问题/3.png">
+<meta property="og:updated_time" content="2019-04-24T12:07:34.777Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《JavaScript高级程序设计》学习笔记之变量、作用域和内存问题">
+<meta name="twitter:description" content="学习目标 理解基本类型和引用类型的值 理解执行环境 理解垃圾收集">
+<meta name="twitter:image" content="http://yoursite.com/2019/04/24/《JavaScript高级程序设计》学习笔记之变量、作用域和内存问题/1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/04/24/《JavaScript高级程序设计》学习笔记之变量、作用域和内存问题/">
+
+
+
+
+
+  <title>《JavaScript高级程序设计》学习笔记之变量、作用域和内存问题 | Echo</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Echo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/24/《JavaScript高级程序设计》学习笔记之变量、作用域和内存问题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Echo">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/header.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Echo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">《JavaScript高级程序设计》学习笔记之变量、作用域和内存问题</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-24T20:04:32+08:00">
+                2019-04-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h5 id="学习目标"><a href="#学习目标" class="headerlink" title="学习目标"></a>学习目标</h5><ul>
+<li>理解基本类型和引用类型的值</li>
+<li>理解执行环境</li>
+<li>理解垃圾收集</li>
+</ul>
+<a id="more"></a>
+<h3 id="基本类型和引用类型的值"><a href="#基本类型和引用类型的值" class="headerlink" title="基本类型和引用类型的值"></a>基本类型和引用类型的值</h3><p>js中包括两种不同数据类型的值：</p>
+<ol>
+<li><strong>基本类型值：</strong> undefined null string number boolean</li>
+<li><strong>引用类型值：</strong> 对象</li>
+</ol>
+<h4 id="动态的属性"><a href="#动态的属性" class="headerlink" title="动态的属性"></a>动态的属性</h4><blockquote>
+<p>对于引用类型的值，我们可以为其添加、改变和删除属性和方法。但不能给基本类型的值添加属性。</p>
+</blockquote>
+<h4 id="复制变量值"><a href="#复制变量值" class="headerlink" title="复制变量值"></a>复制变量值</h4><blockquote>
+<p>两种数据类型，除了保存方式不一样之外，在从一个变量向另一个变量复制基本类型值和引用类型值时，也存在不同。</p>
+</blockquote>
+<ol>
+<li><p>复制基本类型的值<br>如果从一个变量向另一个变量复制基本类型的值，会在变量对象上创建一个新值，然后把该值复制到为新变量分配的位置上。</p>
+</li>
+<li><p>复制引用类型的值<br>当用一个变量向另一个变量复制引用类型的值的时候，同样也会将存储在变量对象中的值复制一份放到新变量分配的空间中，不同的是，这个值的副本实际上是一个指针，而这个指针指向存储在堆中的一个对象，复制操作结束之后，两个变量实际上将引用同一个对象。所以只要改变其中一个变量就会影响到另一个变量。</p>
+</li>
+</ol>
+<p><img src="/2019/04/24/《JavaScript高级程序设计》学习笔记之变量、作用域和内存问题/1.png" alt></p>
+<h4 id="传递参数"><a href="#传递参数" class="headerlink" title="传递参数"></a>传递参数</h4><p><em>（不是很懂，之后再找资料看看，重新理解）</em></p>
+<blockquote>
+<p>ECMAScript中所有函数的参数都是按值传递的。</p>
+</blockquote>
+<ul>
+<li>把函数外部的值复制给函数内部的参数，就和把值从一个变量复制到另一个变量一样。</li>
+<li>把函数参数想象成局部变量。</li>
+</ul>
+<h4 id="检测类型"><a href="#检测类型" class="headerlink" title="检测类型"></a>检测类型</h4><ul>
+<li><p><strong>typeof操作符</strong>是确定一个变量是字符串、数值、布尔值，还是undefined的最佳工具。但是变量的值是一个对象或null，会返回object。</p>
+</li>
+<li><p><strong>instanceof操作符</strong>检测引用类型的值。所有引用类型的值都是Object的实例。在检测一个引用类型值和Object构造函数时，instanceof操作符始终返回true。但使用instanceof操作符检测基本类型的值返回false,因为基本类型不是对象。</p>
+</li>
+</ul>
+<h3 id="执行环境及作用域"><a href="#执行环境及作用域" class="headerlink" title="执行环境及作用域"></a>执行环境及作用域</h3><ul>
+<li>执行环境定义了变量或函有权访问的其他数据，决定了它们各自行为。</li>
+<li>变量对象(VO)：环境中定义的所有变量和函数.。</li>
+<li><p>在JavaScript中执行环境主要的有两种：<strong>全局执行环境</strong>，<strong>函数执行环境</strong>：<br>1.全局执行环境绑定在 WEB浏览器顶层宿主对象 window上，也就是说我们在全局执行环境中声明的变量或者函数都会将作为 window对象的属性或者是方法。<br>2.函数的执行环境也是一种局部执行环境，变量对象会比较特殊，我们更多的将其称之为“活动对象(Active Object)”，它默认保存的一个标识符就是 arguments，而 arguments 中保存的便是该函数的参数。</p>
+</li>
+<li><p><strong>作用域链</strong>：<br>当执行环境被加入到执行栈中进行执行的时候，JS引擎会根据变量对象来解析标识符，首先它会查找当前执行环境中的标识符是否在变量对象中有定义，如果有则取得标识符的值进行下一步操作，如果没有，则向上进入到上一级执行环境，访问其变量对象，依次类推，像这样对不同的环境不同的变量对象进行访问的路径，我们可以称之为作用域链。</p>
+</li>
+<li><p>作用域链的用途是保证对执行环境有权访问的所有变量和函数的有序访问。</p>
+</li>
+</ul>
+<p><img src="/2019/04/24/《JavaScript高级程序设计》学习笔记之变量、作用域和内存问题/2.png" alt></p>
+<ul>
+<li>标识符解析实际上就是沿着作用域链进行标识符的查找。</li>
+<li>作用域链的访问只能由前向后，由下向上，而不能反方向访问。举个例子：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var x = 1;</span><br><span class="line">function method()&#123;    </span><br><span class="line">    var y = 2;          </span><br><span class="line">    console.log(x);</span><br><span class="line">&#125;</span><br><span class="line">method();</span><br><span class="line">console.log(y); //Uncaught ReferenceError: y is not defined</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="/2019/04/24/《JavaScript高级程序设计》学习笔记之变量、作用域和内存问题/3.png" alt></p>
+<h4 id="延长作用域"><a href="#延长作用域" class="headerlink" title="延长作用域"></a>延长作用域</h4><p>在 JavaScript中有的语句可以在当前的作用域链前端增加一个变量对象，从而延长作用域链：</p>
+<ol>
+<li><strong>try catch</strong><br> 对于 catch 语句而言则会创建一个新的对象，然后添加至当前作用域链的前端，在这个变量对象中保存的主要是错误对象 Error 的相关信息，例如 name，message等。</li>
+<li><strong>with</strong><br>将指定的对象作为变量对象添加至作用域链的前端。</li>
+</ol>
+<h4 id="没有块级作用域"><a href="#没有块级作用域" class="headerlink" title="没有块级作用域"></a>没有块级作用域</h4><p>JavaScript (ES5) 中并不存在块级作用域，ES5支持的作用域跟执行环境相同，主要有函数（局部）作用域、全局作用域。</p>
+<ol>
+<li>声明函数<blockquote>
+<p>使用var声明的变量会自动添加到最接近的环境中，在函数内部，最接近的环境就是函数局部环境，在with语句中，最接近的环境是函数环境，如果初始化的时候没有制定var声明，该变量就会被添加到全局环境中。</p>
+</blockquote>
+</li>
+<li>查询标志符<blockquote>
+<p>js在查找变量的过程是逐级向上的。</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="垃圾收集"><a href="#垃圾收集" class="headerlink" title="垃圾收集"></a>垃圾收集</h3><blockquote>
+<p>JavaScript有自动的垃圾回收机制，执行环境会自动管理代码执行过程中使用的内容。</p>
+</blockquote>
+<p><strong>垃圾回收机制的基本原理：</strong><br>找出那些不再继续使用的变量，然后释放其占用的内存。为此，垃圾收集器会按照固定的时间间隔周期性地执行这一操作。</p>
+<ol>
+<li><strong>标记清除</strong></li>
+</ol>
+<ul>
+<li><p>当变量进入环境(例如： 声明一个变量)，就将这个变量标记为”进入环境”，当变量离开环境时将其标志为”离开环境”。</p>
+</li>
+<li><p>然后JS的垃圾回收机制每隔一段时间来扫描，将标记为”离开环境”的变量进行释放。</p>
+</li>
+</ul>
+<ol start="2">
+<li><strong>引用计数</strong></li>
+</ol>
+<ul>
+<li>引用计数的含义是跟踪记录每个值被引用的次数 :</li>
+<li>当声明了一个变量并将一个引用类型的值赋给该变量时，则这个值的引用次数就是1，如果同一个值又被赋给另一个变量，则该引用次数又加一.</li>
+<li>相反如果包含这个值引用的变量又取得了另外一个值，则这个值的引用次数减一。</li>
+<li>当这个值的引用次数变成0的时，则说明没有办法再访问这个值了，因而就可以将其占用的内存空间回收回来。</li>
+</ul>
+<p>引用计数带来的问题:<strong>循环引用</strong></p>
+<h3 id="性能问题"><a href="#性能问题" class="headerlink" title="性能问题"></a>性能问题</h3><blockquote>
+<p>垃圾回收机制是周期性的进行运行的。</p>
+</blockquote>
+<h3 id="管理内存"><a href="#管理内存" class="headerlink" title="管理内存"></a>管理内存</h3><blockquote>
+<p>将不用的变量手动设置为null，解除引用关系。</p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/22/JavaScript之作用域和闭包-三/" rel="next" title="JavaScript之作用域和闭包(三)">
+                <i class="fa fa-chevron-left"></i> JavaScript之作用域和闭包(三)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/header.jpg" alt="Echo">
+            
+              <p class="site-author-name" itemprop="name">Echo</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Echogithu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="13433680844@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#学习目标"><span class="nav-number">1.</span> <span class="nav-text">学习目标</span></a></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#基本类型和引用类型的值"><span class="nav-number"></span> <span class="nav-text">基本类型和引用类型的值</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#动态的属性"><span class="nav-number"></span> <span class="nav-text">动态的属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#复制变量值"><span class="nav-number"></span> <span class="nav-text">复制变量值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#传递参数"><span class="nav-number"></span> <span class="nav-text">传递参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#检测类型"><span class="nav-number"></span> <span class="nav-text">检测类型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#执行环境及作用域"><span class="nav-number"></span> <span class="nav-text">执行环境及作用域</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#延长作用域"><span class="nav-number"></span> <span class="nav-text">延长作用域</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#没有块级作用域"><span class="nav-number"></span> <span class="nav-text">没有块级作用域</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#垃圾收集"><span class="nav-number"></span> <span class="nav-text">垃圾收集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#性能问题"><span class="nav-number"></span> <span class="nav-text">性能问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#管理内存"><span class="nav-number"></span> <span class="nav-text">管理内存</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Echo</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
