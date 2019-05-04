@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="JavaScript,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="学习目标 Date类型 RegExp类型">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《JavaScript高级程序设计》学习笔记之引用类型（二）">
+<meta property="og:url" content="http://yoursite.com/2019/05/04/《JavaScript高级程序设计》学习笔记之引用类型（二）/index.html">
+<meta property="og:site_name" content="Echo">
+<meta property="og:description" content="学习目标 Date类型 RegExp类型">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2019/05/04/《JavaScript高级程序设计》学习笔记之引用类型（二）/1.png">
+<meta property="og:updated_time" content="2019-05-04T03:42:01.475Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《JavaScript高级程序设计》学习笔记之引用类型（二）">
+<meta name="twitter:description" content="学习目标 Date类型 RegExp类型">
+<meta name="twitter:image" content="http://yoursite.com/2019/05/04/《JavaScript高级程序设计》学习笔记之引用类型（二）/1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/05/04/《JavaScript高级程序设计》学习笔记之引用类型（二）/">
+
+
+
+
+
+  <title>《JavaScript高级程序设计》学习笔记之引用类型（二） | Echo</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Echo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/04/《JavaScript高级程序设计》学习笔记之引用类型（二）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Echo">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/header.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Echo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">《JavaScript高级程序设计》学习笔记之引用类型（二）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-04T11:29:24+08:00">
+                2019-05-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="学习目标"><a href="#学习目标" class="headerlink" title="学习目标"></a>学习目标</h3><ul>
+<li>Date类型</li>
+<li>RegExp类型</li>
+</ul>
+<a id="more"></a>
+<h3 id="Date类型"><a href="#Date类型" class="headerlink" title="Date类型"></a>Date类型</h3><h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><ul>
+<li><strong>创建</strong><blockquote>
+<p>使用 new 运算符结合 Date() 构造函数即可创建一个 Date 类型的实例对象。</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var date = new Date();</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>三个方法</strong></li>
+</ul>
+<ol>
+<li><p><strong>Date.parse()</strong>:<br>接受一个表示日期的字符串参数，然后尝试根据这个字符串返回相应日期的毫秒数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var someDate = new Date(Date.parse(&quot;May 25,2004&quot;));</span><br><span class="line"></span><br><span class="line">var someDate = new Date(&quot;May 25,2004&quot;); //与上面等价</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Date.UTC()</strong>:<br>同样返回表示日期的毫秒数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var y2k = new Date(Date.UTC(2000, 0));</span><br><span class="line"></span><br><span class="line">var allFives = new Date(Date.UTC(2005,4,5,17,55,55));</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Date.now()</strong>:<br>返回表示调用这个方式时的日期和时间的毫秒数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var start = Date.now();</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="继承的方法"><a href="#继承的方法" class="headerlink" title="继承的方法"></a>继承的方法</h4><p>Date类型重写toLocaleString(),toString()和valueOf()方法：</p>
+<ul>
+<li><strong>toLocaleString()</strong> ：按照与浏览器设置的地区相适应的格式返回日期和时间</li>
+<li><strong>toString()</strong> : 返回带有时区信息的日期和时间</li>
+<li><strong>valueOf()</strong> : 返回日期的毫秒表示，可以方便使用比较操作符来比较日期值</li>
+</ul>
+<h4 id="日期格式化方法"><a href="#日期格式化方法" class="headerlink" title="日期格式化方法"></a>日期格式化方法</h4><table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>toDateString()</td>
+<td>以特定于实现的格式显示星期几、月、日和年</td>
+</tr>
+<tr>
+<td>toTimeString()</td>
+<td>以特定于实现的格式显示时、分、秒和时区</td>
+</tr>
+<tr>
+<td>toLocaleDateString()</td>
+<td>以特定于地区的格式显示星期几、月、日和年</td>
+</tr>
+<tr>
+<td>toLocaleTimeString()</td>
+<td>以特定于实现的格式显示时、分、秒</td>
+</tr>
+<tr>
+<td>toUTCString()</td>
+<td>以特定于实现的格式完整的UTC日期</td>
+</tr>
+</tbody>
+</table>
+<h4 id="日期-时间组件方法"><a href="#日期-时间组件方法" class="headerlink" title="日期/时间组件方法"></a>日期/时间组件方法</h4><p><img src="/2019/05/04/《JavaScript高级程序设计》学习笔记之引用类型（二）/1.png" alt></p>
+<h4 id="应用示例"><a href="#应用示例" class="headerlink" title="应用示例"></a>应用示例</h4><ol>
+<li>获取时间戳</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var date = new Date();</span><br><span class="line">Date.now();</span><br><span class="line">+ date;</span><br><span class="line">date * 1;</span><br><span class="line">date.valueOf();</span><br><span class="line">date.getTime();</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li><p>耗时分析</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var start = Date.now()；</span><br><span class="line">// doSomething...</span><br><span class="line">Date.now() - start;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>时间戳快速格式化</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var date = new Date(&apos;2019/01/20 13:40:00&apos;);</span><br><span class="line">var timeStamp = (Date.now() - date * 1) / 1000; // Convert Seconds</span><br><span class="line">timeStamp / 3600; // Hours</span><br><span class="line">timeStamp % 3600 / 60; // Minutes</span><br><span class="line">timeStamp % 3600 % 60; //Seconds</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="RegExp类型"><a href="#RegExp类型" class="headerlink" title="RegExp类型"></a>RegExp类型</h3><blockquote>
+<p>ECMAScript 通过RegExp类型来支持正则表达式。</p>
+</blockquote>
+<h4 id="简介-1"><a href="#简介-1" class="headerlink" title="简介"></a>简介</h4><h6 id="正则表达式的匹配模式："><a href="#正则表达式的匹配模式：" class="headerlink" title="正则表达式的匹配模式："></a>正则表达式的匹配模式：</h6><ul>
+<li><strong>g</strong>: 表示全局模式</li>
+<li><strong>i</strong>: 表示不区分大小写</li>
+<li><strong>m</strong>：表示多行</li>
+</ul>
+<h6 id="正则表达式的元字符："><a href="#正则表达式的元字符：" class="headerlink" title="正则表达式的元字符："></a>正则表达式的元字符：</h6><blockquote>
+<p>( [ { \ ^ $ | ) ? * + .]}</p>
+</blockquote>
+<p>如果我们要匹配的内容中本身就含有元字符，那么在匹配的时候必须要对元字符进行转义，而这个转义功能则由另一个元字符 \ 实现：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">\\b =&gt; &apos;\b&apos;</span><br><span class="line">\[ =&gt; &apos;[&apos;</span><br><span class="line">\. =&gt; &apos;.&apos;</span><br></pre></td></tr></table></figure></p>
+<h6 id="创建正则表达式："><a href="#创建正则表达式：" class="headerlink" title="创建正则表达式："></a>创建正则表达式：</h6><ol>
+<li>字面量</li>
+<li>RegExp构造函数</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line">*匹配第一个&quot;bat&quot;或&quot;cat&quot;</span><br><span class="line">*/</span><br><span class="line">var pattern1 = /[bc]at/i; //字面量</span><br><span class="line">var pattern2 = new RegExp[&quot;[bc]at&quot;,&quot;i&quot;]; //RegExp构造函数</span><br></pre></td></tr></table></figure>
+<p>一个完整的正则表达式主要有两部分组成：“匹配模式(pattern)”与“修饰符(modifier)”。</p>
+<h4 id="实例属性"><a href="#实例属性" class="headerlink" title="实例属性"></a>实例属性</h4><p>RegExp 实例对象（字面量对象）所具有的属性。</p>
+<ul>
+<li>global：布尔值，表示是否设置了 g 标志。</li>
+<li>ignoreCase：布尔值，表示是否设置了 i 标志。</li>
+<li>multiline：布尔值，表示是否设置了 m 标志。</li>
+<li>lastIndex：数值，下次匹配的起始位置，默认值为0.</li>
+<li>source：字符串，以字符串的形式返回匹配模式本身。</li>
+</ul>
+<h4 id="实例方法"><a href="#实例方法" class="headerlink" title="实例方法"></a>实例方法</h4><h5 id="exec"><a href="#exec" class="headerlink" title="exec()"></a>exec()</h5><p>功能：根据正则表达式的匹配结果来返回一个 Like Array 或者是 null 的结果。<br>参数：要应用模式的字符串<br>返回：返回第一个匹配项信息的数组 | null<br>说明：如果表达式在所要匹配的字符串中有符合条件的匹配结果，则返回一个 Link Array，这个 Array 的结构如下：</p>
+<p><code>[result,group1,group2,...,input:text,index:number]</code></p>
+<ul>
+<li>result:匹配的结果字符串。</li>
+<li>group1，group2…：如果有分组匹配的话，则表示每个分组的值。</li>
+<li>input:返回原字符串</li>
+<li>index:返回匹配结果首字符在原字符串中的索引位置。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var text = &apos;ababab&apos;;</span><br><span class="line">var pattern1 = /(a)/;</span><br><span class="line">var pattern2 = /.(b)/;</span><br><span class="line">console.log(pattern1.exec(text)) //(2) [&quot;a&quot;, &quot;a&quot;, index: 0, input: &quot;ababab&quot;]</span><br><span class="line">console.log(pattern2.exec(text)) //(2) [&quot;ab&quot;, &quot;b&quot;, index: 0, input: &quot;ababab&quot;]</span><br></pre></td></tr></table></figure>
+<h5 id="test"><a href="#test" class="headerlink" title="test()"></a>test()</h5><p>功能：根据“匹配模式”在要匹配的字符串中是否具有符合匹配条件的结果，来返回一个布尔值。<br>参数：要应用模式的字符串<br>返回：Boolean<br>说明：如果正则表达式中含有全局(g)的修饰符，并进行了多次匹配操作，则 test 会根据 lastIndex 的值作为锚点继续对要匹配的字符串按位置索引继续向下查找匹配。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var pattern = /a/g;</span><br><span class="line">var text = &apos;ababba&apos;;</span><br><span class="line"></span><br><span class="line">pattern.test(text);</span><br><span class="line">console.log(pattern.lastIndex);  //1</span><br><span class="line">pattern.test(text);</span><br><span class="line">console.log(pattern.lastIndex); //3</span><br><span class="line">pattern.test(text);</span><br><span class="line">console.log(pattern.lastIndex); //6</span><br></pre></td></tr></table></figure></p>
+<p>test 常常结合 if 语句进行条件是否成立的判断，所以只需要判断一次即可。</p>
+<h4 id="RegExp构造函数属性"><a href="#RegExp构造函数属性" class="headerlink" title="RegExp构造函数属性"></a>RegExp构造函数属性</h4><ol>
+<li><strong>input属性</strong>：返回原始字符串</li>
+<li><strong>lastMatch属性</strong>：返回最近一次与整个正则表达式匹配的字符串。</li>
+<li><strong>lastParen属性</strong>：返回最近一次匹配的捕获组。</li>
+<li><strong>leftContext属性</strong>：以作用域中当前正则实例对象的匹配结果为上下文，返回之前的子串</li>
+<li><strong>leftContext属性</strong>：以作用域中当前正则实例对象的匹配结果为上下文，返回之后的子串</li>
+<li><strong>$1~$9</strong> : 返回作用域中当前正则实例对象最近一次匹配的1-9个分组结果。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">var text = &quot;this has been a short summer&quot;;</span><br><span class="line">var pattern = /(.)hort/g;</span><br><span class="line">var pattern1 = /(..)or(.)/g;</span><br><span class="line"></span><br><span class="line">if(pattern.test(text))&#123;</span><br><span class="line">    console.log(RegExp.input); //this has been a short summer</span><br><span class="line">    console.log(RegExp.lastMatch); // short</span><br><span class="line">    console.log(RegExp.lastParen); // s</span><br><span class="line">    console.log(RegExp.leftContext); //this has been a</span><br><span class="line">    console.log(RegExp.rightContext); // summer</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">if(pattern1.test(text))&#123;</span><br><span class="line">    console.log(RegExp.$1); //sh</span><br><span class="line">    console.log(RegExp.$1); //t</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/02/《JavaScript高级程序设计》学习笔记之引用类型（一）/" rel="next" title="《JavaScript高级程序设计》学习笔记之引用类型（一）">
+                <i class="fa fa-chevron-left"></i> 《JavaScript高级程序设计》学习笔记之引用类型（一）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/header.jpg" alt="Echo">
+            
+              <p class="site-author-name" itemprop="name">Echo</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Echogithu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="13433680844@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#学习目标"><span class="nav-number">1.</span> <span class="nav-text">学习目标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Date类型"><span class="nav-number">2.</span> <span class="nav-text">Date类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#简介"><span class="nav-number">2.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#继承的方法"><span class="nav-number">2.2.</span> <span class="nav-text">继承的方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#日期格式化方法"><span class="nav-number">2.3.</span> <span class="nav-text">日期格式化方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#日期-时间组件方法"><span class="nav-number">2.4.</span> <span class="nav-text">日期/时间组件方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#应用示例"><span class="nav-number">2.5.</span> <span class="nav-text">应用示例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RegExp类型"><span class="nav-number">3.</span> <span class="nav-text">RegExp类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#简介-1"><span class="nav-number">3.1.</span> <span class="nav-text">简介</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#正则表达式的匹配模式："><span class="nav-number">3.1.0.1.</span> <span class="nav-text">正则表达式的匹配模式：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#正则表达式的元字符："><span class="nav-number">3.1.0.2.</span> <span class="nav-text">正则表达式的元字符：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#创建正则表达式："><span class="nav-number">3.1.0.3.</span> <span class="nav-text">创建正则表达式：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实例属性"><span class="nav-number">3.2.</span> <span class="nav-text">实例属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实例方法"><span class="nav-number">3.3.</span> <span class="nav-text">实例方法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#exec"><span class="nav-number">3.3.1.</span> <span class="nav-text">exec()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#test"><span class="nav-number">3.3.2.</span> <span class="nav-text">test()</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RegExp构造函数属性"><span class="nav-number">3.4.</span> <span class="nav-text">RegExp构造函数属性</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Echo</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
