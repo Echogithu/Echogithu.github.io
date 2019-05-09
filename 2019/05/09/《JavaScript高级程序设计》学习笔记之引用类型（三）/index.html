@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="JavaScript,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="学习目标 Function类型 基本包装类型">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《JavaScript高级程序设计》学习笔记之引用类型（三）">
+<meta property="og:url" content="http://yoursite.com/2019/05/09/《JavaScript高级程序设计》学习笔记之引用类型（三）/index.html">
+<meta property="og:site_name" content="Echo">
+<meta property="og:description" content="学习目标 Function类型 基本包装类型">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2019/05/09/《JavaScript高级程序设计》学习笔记之引用类型（三）/Image.png">
+<meta property="og:updated_time" content="2019-05-09T14:16:38.976Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《JavaScript高级程序设计》学习笔记之引用类型（三）">
+<meta name="twitter:description" content="学习目标 Function类型 基本包装类型">
+<meta name="twitter:image" content="http://yoursite.com/2019/05/09/《JavaScript高级程序设计》学习笔记之引用类型（三）/Image.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/05/09/《JavaScript高级程序设计》学习笔记之引用类型（三）/">
+
+
+
+
+
+  <title>《JavaScript高级程序设计》学习笔记之引用类型（三） | Echo</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Echo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/09/《JavaScript高级程序设计》学习笔记之引用类型（三）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Echo">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/header.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Echo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">《JavaScript高级程序设计》学习笔记之引用类型（三）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-09T22:10:55+08:00">
+                2019-05-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="学习目标"><a href="#学习目标" class="headerlink" title="学习目标"></a>学习目标</h3><ul>
+<li>Function类型</li>
+<li>基本包装类型</li>
+</ul>
+<a id="more"></a>
+<h3 id="Function类型"><a href="#Function类型" class="headerlink" title="Function类型"></a>Function类型</h3><h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><ul>
+<li><p>函数也是对象，每个函数都是 Function 类型的实例。</p>
+</li>
+<li><p>函数具有属性和方法。例如：length、prototype、bind、call、apply等。</p>
+</li>
+<li><p>函数名实际上是一个指向函数对象的指针，不会与某个函数绑定。</p>
+</li>
+<li><p>使用不带圆括号的函数名是访问函数指针，而非调用函数。</p>
+</li>
+</ul>
+<h5 id="定义函数方式："><a href="#定义函数方式：" class="headerlink" title="定义函数方式："></a>定义函数方式：</h5><p>1.函数声明语法定义<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function sum (num1,num2)&#123;</span><br><span class="line">   return num1 + num2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>2.函数表达式定义<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var sum = function(num1,num2)&#123;</span><br><span class="line">   return num1 + num2;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>使用函数表达式定义函数时，没有必要使用函数名——通过变量即可引用函数。<br>注意函数末尾有分号，像声明其他变量一样。</p>
+<p>3.使用Function构造函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var sum = new Function (&apos;num1&apos;, &apos;num2&apos;, &apos;return num1 + num2&apos;)</span><br></pre></td></tr></table></figure></p>
+<h4 id="没有重载"><a href="#没有重载" class="headerlink" title="没有重载"></a>没有重载</h4><blockquote>
+<p>ECMAScript中没有函数重载概念。在同名函数中，后面的函数会覆盖前面函数。</p>
+</blockquote>
+<h4 id="函数声明与函数表达式"><a href="#函数声明与函数表达式" class="headerlink" title="函数声明与函数表达式"></a>函数声明与函数表达式</h4><h5 id="函数声明"><a href="#函数声明" class="headerlink" title="函数声明"></a>函数声明</h5><blockquote>
+<p>解析器会率先读取函数声明，并使其在执行任何代码之前可用。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">alert(sum(10,10));</span><br><span class="line">function sum(num1,num2)&#123;</span><br><span class="line">   return num1 + num2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>解析器通过<strong>函数声明提升</strong>过程，读取并将函数声明添加到执行环境中。</p>
+<h5 id="函数表达式"><a href="#函数表达式" class="headerlink" title="函数表达式"></a>函数表达式</h5><blockquote>
+<p>函数表达式等到解析器执行到所在代码行，才会被解释执行。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">alert(sum(10,10));</span><br><span class="line">var sum = function(num1,num2)&#123;</span><br><span class="line">   return num1 + num2;</span><br><span class="line">&#125; //报错</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h4 id="作为值的函数"><a href="#作为值的函数" class="headerlink" title="作为值的函数"></a>作为值的函数</h4><blockquote>
+<p>函数名就是变量，所以函数也可以作为值来使用。</p>
+</blockquote>
+<ul>
+<li>像传递参数一样把一个函数传递给另一个函数<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function callSomeFunction(someFunction,someArgument)&#123;</span><br><span class="line">   return someFunction(someArgument);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function add10(num)&#123;</span><br><span class="line">   return num + 10;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var result1 = callSomeFunction(add0,10); // 20</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>要访问函数的指针而不执行函数，去掉函数名后面的那对圆括号。</p>
+<ul>
+<li>将函数作为另一个函数的结果返回<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">function createComparisonFunction(propertyName) &#123;</span><br><span class="line">   return function (object1, object2)&#123;</span><br><span class="line">       var value1 = object1[propertyName];</span><br><span class="line">       var value2 = object2[propertyName];</span><br><span class="line"></span><br><span class="line">       if ( value1 &lt; value2 ) &#123;</span><br><span class="line">           return -1;</span><br><span class="line">      &#125; else if ( value1 &gt; value2 ) &#123;</span><br><span class="line">          return 1;</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">          return 0;</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;;</span><br><span class="line">&#125;</span><br><span class="line">var data = [</span><br><span class="line">   &#123;name: &quot;Zhang&quot;, age：30&#125;，</span><br><span class="line">   &#123;name: &quot;Ning&quot;, age:28&#125;</span><br><span class="line">];</span><br><span class="line">data.sort(createComparisonFunction(&quot;name&quot;));</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>调用createComparisonFunction(“name”)方法创建一个比较函数，以便按照每个对象的name属性值进行排序。</p>
+<h4 id="函数内部属性"><a href="#函数内部属性" class="headerlink" title="函数内部属性"></a>函数内部属性</h4><blockquote>
+<p>函数的内部有两个特殊的对象：<strong>this</strong> 与 <strong>arguments</strong>。</p>
+</blockquote>
+<h5 id="arguments"><a href="#arguments" class="headerlink" title="arguments"></a>arguments</h5><p>arguments是一个类数组对象，包含传入函数中的所有参数。对象有个callee的属性，该属性是一个指针，指向拥有这个arguments对象的函数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//阶乘函数</span><br><span class="line">function factorial(num)&#123;</span><br><span class="line">   if(num &lt;= 1)&#123;</span><br><span class="line">       return 1;</span><br><span class="line">   &#125; else &#123;</span><br><span class="line">       return num * factorial(num-1)</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>递归算法，为了消除紧密耦合的现象，可使用arguments.calle。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function factorial(num)&#123;</span><br><span class="line">   if(num &lt;= 1)&#123;</span><br><span class="line">       return 1;</span><br><span class="line">   &#125; else &#123;</span><br><span class="line">       return num * arguments.callee(num-1)</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h5 id="this"><a href="#this" class="headerlink" title="this"></a>this</h5><p>this引用的是函数据以执行的环境对象。</p>
+<ul>
+<li>当全局作用域中调用函数时，this对象引用的就是window。</li>
+<li>而当函数作为某个对象的方法被调用时，则 this 指向的就是这个对象本身。</li>
+</ul>
+<p>在严格模式 use strict 下，函数内部的 this 将不会指向 window，而是 null。</p>
+<h4 id="函数属性和方法"><a href="#函数属性和方法" class="headerlink" title="函数属性和方法"></a>函数属性和方法</h4><h5 id="length属性"><a href="#length属性" class="headerlink" title="length属性"></a>length属性</h5><blockquote>
+<p>length属性返回函数当前的形参个数，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function a()&#123;&#125;</span><br><span class="line">function b(a)&#123;&#125;</span><br><span class="line">function c(a,b)&#123;&#125;</span><br><span class="line"></span><br><span class="line">a.length //0</span><br><span class="line">b.length //1</span><br><span class="line">c.length 2</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h5 id="prototype属性"><a href="#prototype属性" class="headerlink" title="prototype属性"></a>prototype属性</h5><p>prototype 对象上定义的属性与方法都是用与被其实例对象(new 运算符)所继承，因此普通函数也可以充当构造器函数使用。</p>
+<p>prototype属性不可枚举。</p>
+<h5 id="apply-和call"><a href="#apply-和call" class="headerlink" title="apply()和call()"></a>apply()和call()</h5><p>函数对象自带的 call 与 apply 方法则可以自定义函数或方法内部的 this 指向。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var params = &#123;</span><br><span class="line">   color: &apos;Red&apos;</span><br><span class="line">&#125;;</span><br><span class="line">function sayColor(r, g, b) &#123;    </span><br><span class="line">   alert(this.color + &apos;:&apos; + r + &apos;,&apos; + g + &apos;,&apos; + b);</span><br><span class="line">&#125;</span><br><span class="line">function say(r, g, b) &#123;    </span><br><span class="line">   sayColor.apply(params, arguments)  //传入arguments对象</span><br><span class="line">&#125;</span><br><span class="line">sayColor.call(params, 255, 255, 255);</span><br><span class="line">say(255, 255, 255);</span><br></pre></td></tr></table></figure></p>
+<p><strong>区别</strong>：call 与 apply 在功能上是相同的，主要区别是接收的参数形式不同，call 方法依次接收，而 apply 方法则可以接收一个参数数组。它们都能够扩充函数赖以运行的作用域。</p>
+<h5 id="bind"><a href="#bind" class="headerlink" title="bind()"></a>bind()</h5><ul>
+<li>bind()会创建一个函数的实例，其this值会被绑定到传给bind()函数的值。</li>
+<li>bind 方法也可以改变一个函数或方法内部的 this 指向，在使用格式上也与 call 方法完全相同。</li>
+<li>bind 方法与 call 或者是 apply 等方法最大的区别就是 bind 方法在改变 this 指向后并不会立即调用函数而是返回一个新的函数。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">window.color  = &quot;red&quot;;</span><br><span class="line">var o = &#123; color: &quot;blue&quot; &#125;;</span><br><span class="line"></span><br><span class="line">function sayColor () &#123;</span><br><span class="line">   alert(this.color);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var objectSayColor = sayColor.bind(o);</span><br><span class="line">objectSayColor(); //blue</span><br></pre></td></tr></table></figure>
+<h3 id="基本包装类型"><a href="#基本包装类型" class="headerlink" title="基本包装类型"></a>基本包装类型</h3><h4 id="引用类型与基本包装类型的区别"><a href="#引用类型与基本包装类型的区别" class="headerlink" title="引用类型与基本包装类型的区别"></a>引用类型与基本包装类型的区别</h4><blockquote>
+<p>引用类型与基本包装类型的主要区别就是对象的生存期。</p>
+</blockquote>
+<ul>
+<li>使用new操作符创建的引用类型的实例，在执行流离开当前作用域之前都一直保存在内存中。</li>
+<li>自动创建的基本包装类型的对象，则只存在于一行代码的执行瞬间，然后立即被销毁。无法在运行时为基本类型值添加属性和方法。</li>
+</ul>
+<h4 id="Boolean"><a href="#Boolean" class="headerlink" title="Boolean"></a>Boolean</h4><ul>
+<li>Boolean类型是与布尔值对应的引用类型。</li>
+<li>Boolean类型创建方式有两种</li>
+</ul>
+<ol>
+<li><p>通过Boolean构造函数并传入true或false值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var booleanObject = new Boolean(true); //Boolean的引用类型</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>另一种则是使用字面量格式，创建“基本类型”的 Boolean 值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var boolean = true;//true</span><br><span class="line"></span><br><span class="line">typeof boolean; //“boolean”;</span><br><span class="line">boolean instanceof Boolean; //false</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="Number"><a href="#Number" class="headerlink" title="Number"></a>Number</h4><ul>
+<li>Number类型是与数字值对应的引用类型。</li>
+<li>创建Number对象，可以在调用Number构造函数时向其中传递相应的数值。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var num = new Number(10); //Number的引用类型</span><br><span class="line">var count = 1;  //Number的基本类型</span><br></pre></td></tr></table></figure>
+<h5 id="转换方法"><a href="#转换方法" class="headerlink" title="转换方法"></a>转换方法</h5><ul>
+<li>Number 类型也重写了 toString()、toLocaleString()、valueOf() 等方法。</li>
+<li>其中 toString() 与 toLocaleString() 返回数值的字符串形式，而 valueOf() 则返回数值对象对应的基本类型数值。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">typeof num; //object</span><br><span class="line">typeof num.valueOf(); //number</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="实例方法"><a href="#实例方法" class="headerlink" title="实例方法"></a>实例方法</h5><ul>
+<li><p>toString() </p>
+<blockquote>
+<p>接收一个“基数”作为参数，然后以字符串形式返回对应进制的转换结果。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var num = 10;</span><br><span class="line">num.toString(); //&quot;10&quot;</span><br><span class="line">num.toString(10); //&quot;10&quot;</span><br><span class="line">num.toString(8); // &quot;12&quot;</span><br><span class="line">num.toString(2); // &quot;1010&quot;</span><br><span class="line">num.toString(16); // &quot;a&quot;</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>toFixed()</p>
+<blockquote>
+<p>会按照指定的小数位返回数值的字符串表示，会发生四舍五入。<br>缺省参数时，默认为 0</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var num = 10;</span><br><span class="line">alert(num.toFixed(2)); //&quot;10.00&quot;</span><br><span class="line">//2 表示显示几位小数</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>toExponential()</p>
+<blockquote>
+<p>以字符串的形式返回数值的科学计数法，格式为：MeR，其中 M 为尾数，e 默认为10，R则是指数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">10..toExponential(); //&quot;1e+1&quot;</span><br><span class="line">99..toExponential(); //&quot;9.9e+1&quot;</span><br><span class="line">100..toExponential(); //&quot;1e+2&quot;</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>toPrecision()</p>
+<blockquote>
+<p>toPrecision() 方法会根据数值的特点自动调用 toFixed() 方法或 toExponential() 方法返回适合的数值格式。<br>toPrecision() 方法也接收一个参数，用于控制返回值的位数（不包括指数位数）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">99..toPrecision(); //&quot;99&quot;</span><br><span class="line">99..toPrecision(1) //&quot;1e+2&quot;;</span><br><span class="line">99..toPrecision(2) //&quot;99&quot;</span><br><span class="line">99..toPrecision(3) //&quot;99.0&quot;</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+</ul>
+<h4 id="String"><a href="#String" class="headerlink" title="String"></a>String</h4><ul>
+<li>String类型是字符串的对象包装类型。</li>
+<li>String 类型与 Number、Boolean 类型都属于“基本包装类型”。</li>
+</ul>
+<h5 id="字符方法"><a href="#字符方法" class="headerlink" title="字符方法"></a>字符方法</h5><ul>
+<li>charAt()</li>
+<li>charCodeAt()<br>这两个方法都接收一个位置（数值）作为参数，然后以单字节的形式返回字符串中指定位置的字符。它们的区别在于前者返回的是字符本身，而后者返回的是字符所对应的编码（十进制形式）。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var stringValue = &quot;hello world&quot;;</span><br><span class="line">alert(stringValue.chatAt(1)); //&quot;e&quot;</span><br><span class="line">alert(stringValue.chatCodeAt(1)); //&quot;101&quot;</span><br><span class="line">alert(stringValue[1]); //&quot;e&quot;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="字符串操作方法"><a href="#字符串操作方法" class="headerlink" title="字符串操作方法"></a>字符串操作方法</h5><p><strong>concat()</strong></p>
+<blockquote>
+<p>concat() 方法可以接收多个字符串参数，并将所有参数都拼接成一个完整的字符串。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var str1 = &quot;hello&quot;;</span><br><span class="line">var result = str1.concat(&quot;world&quot;); //&quot;hello world&quot;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h5 id="字符串截取"><a href="#字符串截取" class="headerlink" title="字符串截取"></a>字符串截取</h5><p><strong>slice()/substr()/substring()</strong></p>
+<p>这三个方法都会返回被操作字符串的一个子字符串。<br>返回一或两个参数：第一个参数指定子字符串的开始位置，第二个参数表示子字符串到哪结束。</p>
+<ul>
+<li>slice()和substring()的第二个参数指定的是子字符串最后一个字符后面的位置</li>
+<li>substr()的第二个参数指定的是返回的字符个数</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var str = &apos;hello world&apos;;</span><br><span class="line">str.slice(3, 7); //&quot;lo w&quot;</span><br><span class="line">str.slice(3);  //&quot;lo world&quot;</span><br><span class="line">str.substring(0, 1);  //&quot;h&quot;</span><br><span class="line">str.substring(3); //&quot;lo world&quot;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在传递给这些方法的参数是负值的情况下：<ul>
+<li>slice()方法：会将传入的负值与字符串的长度相加</li>
+<li>substr()方法：将第一个参数加上字符串的长度，而将负的第二个参数转换为0</li>
+<li>substring()方法：把所有负值参数都转换为0</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var str = &apos;hello world&apos;;</span><br><span class="line"></span><br><span class="line">str.slice(-3); //&quot;rld&quot;</span><br><span class="line">str.slice(3,-4); // &quot;lo, w&quot;</span><br><span class="line"></span><br><span class="line">str.substring(-3); //&quot;hello world&quot;</span><br><span class="line">str.substring(3,-4); //&quot;hel&quot; 调用变成了substring(3,0)，而由于这个方法会将较小的数作为开始位置，较大的数作为结束位置。</span><br><span class="line"></span><br><span class="line">str.substr(-3); //&quot;rld&quot;</span><br><span class="line">str.substr(3,-4); //&quot; &quot; (空字符串—第二个参数表示返回字符个数</span><br></pre></td></tr></table></figure>
+<h5 id="字符串位置方法"><a href="#字符串位置方法" class="headerlink" title="字符串位置方法"></a>字符串位置方法</h5><p><strong>lastIndexOf() / indexOf()</strong></p>
+<ul>
+<li>这两个方法都是从一个字符串中搜索给定的子字符串，然后返子字符串的位置，否则返回-1。</li>
+<li><p>它们的区别是indexOf()方法从字符串的开头向后搜索子字符串，而lastIndexOf()则会从指定的位置向前搜索，忽略该位置之后的所有字符。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var str = &apos;hello world&apos;;</span><br><span class="line">str.indexOf(&quot;o&quot;); //4</span><br><span class="line">str.lastIndexOf(&quot;o&quot;); //7</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>这两个方法的第二个参数，用来指定查找的起始位置。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var str = &apos;hello world&apos;;</span><br><span class="line">str.indexOf(&quot;o&quot;，6); //7</span><br><span class="line">str.lastIndexOf(&quot;o&quot;，6); //4</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>利用字符串的位置方法，我们可以从一段文本中筛选出指定字符或字串出现的次数与位置。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var str = &quot;Lorem ipsum dolor sit amet, consectetur adipicing elit&quot;;</span><br><span class="line">var position = new Array();</span><br><span class="line">var pos = str.indesOf(&quot;e&quot;);</span><br><span class="line"></span><br><span class="line">while(pos &gt;-1)&#123;</span><br><span class="line">   position.push(pos);</span><br><span class="line">   pos = str.indexOf(&quot;e&quot;, pos + 1);</span><br><span class="line">&#125;</span><br><span class="line">alert(position); // &quot;3,24,32,35,52&quot;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="trim-方法"><a href="#trim-方法" class="headerlink" title="trim()方法"></a>trim()方法</h5><p>这个方法会创建一个字符串的副本，删除前置及后缀的所有空格，然后返回结果。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var str = &quot;     hello world    &quot;;</span><br><span class="line">str.trim(); // &quot;hello world&quot;;</span><br></pre></td></tr></table></figure>
+<h5 id="字符串大小写转换方法"><a href="#字符串大小写转换方法" class="headerlink" title="字符串大小写转换方法"></a>字符串大小写转换方法</h5><p><strong>toLowerCase() / toLocaleLowerCase() / toUpperCase() / toLocaleUpperCase()</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var str = &quot;hello world&quot;;</span><br><span class="line">str.toUpperCase(); // &quot;HELLO WORLD&quot;</span><br></pre></td></tr></table></figure>
+<h5 id="字符串模式匹配方法"><a href="#字符串模式匹配方法" class="headerlink" title="字符串模式匹配方法"></a>字符串模式匹配方法</h5><p><strong>match() / search() / replace() / split()</strong></p>
+<ul>
+<li><p><strong>match()</strong><br>该方法本质上与调用RegExp的 exec()方法相同。<br>只接受一个参数，一个正则表达式，或者是一个RegExp对象。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var text = &quot;cat, bat, sat, fat&quot;；</span><br><span class="line">var pattern = /.at/;</span><br><span class="line">var matches = text.match(pattern);</span><br><span class="line">matches.index; //0</span><br><span class="line">matches[0]; // &quot;cat&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>search()</strong><br>参数: 字符串或RegExp对象指定的一个正则表达式。<br>返回字符串中第一个匹配项的索引，否则返回-1。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var text = &quot;cat, bat, sat, fat&quot;；</span><br><span class="line">var pos = text.search(/at/); //1</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>replace()</strong><br>该方法实现了字符串的替换操作。<br>接收两个参数，分别是“匹配模式”以及要替换的内容。“匹配模式”可以是一个字符串，也可以是一个正则对象。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var text = &quot;cat, bat, sat, fat&quot;；</span><br><span class="line">//第一个参数是字符串，替换第一个子字符串</span><br><span class="line">var result = text.replace( &quot;at&quot;, &quot;ond&quot;); // &quot;cond, bat, sat, fat&quot;</span><br><span class="line"></span><br><span class="line">//第一个参数是指定全局的正则表达式，替换所有字符串</span><br><span class="line">var result = text.replace( /at/g, &quot;ond&quot;); // &quot;cond, bond, sond, fond&quot;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>如果第二个参数（要替换的内容）是一个字符串，则还可以使用一些特殊的字符序列，将正则表达式的操作结果插入到结果字符串中。</p>
+<table>
+<thead>
+<tr>
+<th>字符序列</th>
+<th>替换文本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$$</td>
+<td>$</td>
+</tr>
+<tr>
+<td>$&amp;</td>
+<td>匹配整个模式的子字符串。与RegExp.lastMatch的值相同</td>
+</tr>
+<tr>
+<td>$’</td>
+<td>匹配的子字符串之前的子字符串。与RegExp.leftContext的值相同</td>
+</tr>
+<tr>
+<td>$`</td>
+<td>匹配的子字符串之后的子字符串。与RegExp.rightContext的值相同</td>
+</tr>
+<tr>
+<td>$n[m]</td>
+<td>指定分组的匹配结果</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var text = &quot;cat, bat, sat, fat&quot;；</span><br><span class="line">result = text.replace(/(.at)/g,&quot;word ($1)&quot;); // word (cat), word (bat), word (sat), word (fat),</span><br></pre></td></tr></table></figure>
+<p>如果第二个参数是一个回调函数，那么这个函数可以接受三个参数，分别是匹配结果、结果首字符的索引位置以及原字符串。如果匹配模式是一个正则对象，且指定了全局修饰符 g，那么回调函数便会根据匹配结果的次数被多次调用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">function htmlEscape(text) &#123;    </span><br><span class="line">   return text.replace(/[&lt;&gt;&quot;&amp;]/g, function(result, resultIndex, originalText) &#123;        </span><br><span class="line">       switch (result) &#123;            </span><br><span class="line">           case &apos;&lt;&apos;:                </span><br><span class="line">               return &apos;&amp;lt;&apos;;            </span><br><span class="line">           case &apos;&gt;&apos;:                </span><br><span class="line">               return &apos;&amp;gt;&apos;;            </span><br><span class="line">           case &apos;&quot;&apos;:                </span><br><span class="line">               return &apos;&amp;quot;&apos;            </span><br><span class="line">           case &apos;&amp;&apos;:                </span><br><span class="line">               return &apos;&amp;amp;&apos;;        </span><br><span class="line">       &#125;    </span><br><span class="line">   &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">htmlEscape(String().big());  //&quot;&amp;lt;big&amp;gt;&amp;lt;/big&amp;gt;&quot;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><strong>split()</strong><br>split() 接收一个“分隔符”作为参数，将原字符串分解成多个子串，然后保存在一个数组中。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var str = &apos;red,orange,yellow,green&apos;;</span><br><span class="line">str.split(&apos;,&apos;); //(4) [&quot;red&quot;, &quot;orange&quot;, &quot;yellow&quot;, &quot;green&quot;]</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>这个“分隔符”还可以是一个正则对象，从而让 split() 方法根据正则的匹配结果来分解原字符串。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str.split(/[^\,]+/); //(5) [&quot;&quot;, &quot;,&quot;, &quot;,&quot;, &quot;,&quot;, &quot;&quot;]</span><br></pre></td></tr></table></figure></p>
+<h5 id="字符串比较方法"><a href="#字符串比较方法" class="headerlink" title="字符串比较方法"></a>字符串比较方法</h5><ul>
+<li><strong>localeCompare()</strong><br>localeCompare 方法会按照本地区的特殊性进行字符串的大小比较：<ul>
+<li>如果字符串对象大于接收的字符串参数，则返回 1 。</li>
+<li>如果字符串对象小于接收的字符串参数，则返回 -1。</li>
+<li>如果两个字符串完全相同，则返回 0。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var str = &quot;def&quot;;</span><br><span class="line">str.localeCompare(&quot;abc&quot;); //1</span><br><span class="line">str.localeCompare(&quot;def&quot;); //0</span><br><span class="line">str.localeCompare(&quot;ghi&quot;); //-1</span><br></pre></td></tr></table></figure>
+<h5 id="静态方法"><a href="#静态方法" class="headerlink" title="静态方法"></a>静态方法</h5><ul>
+<li><strong>fromCharCode()</strong><br>fromCharCode 是 String 对象的静态方法。<br>接收一个或多个十进制的字符编码作为参数并返回这些编码对应的字符本身。<br>从功能上看 fromCharCode 方法与 String 实例对象的 charCodeAt 方法是相反的。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String.fromCharCode(104,101,108,108,111); //hello</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="HTML方法"><a href="#HTML方法" class="headerlink" title="HTML方法"></a>HTML方法</h5><p>String 对象中提供了很多快速创建 HTML字符串的方法。（尽量不要使用）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var s = new String(&apos;Html String Test&apos;);</span><br><span class="line">s.big(); //&quot;&lt;big&gt;Html String Test&lt;/big&gt;&quot;</span><br></pre></td></tr></table></figure></p>
+<p><img src="/2019/05/09/《JavaScript高级程序设计》学习笔记之引用类型（三）/Image.png" alt></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/04/vue学习之双向数据绑定/" rel="next" title="vue学习之双向数据绑定">
+                <i class="fa fa-chevron-left"></i> vue学习之双向数据绑定
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/header.jpg" alt="Echo">
+            
+              <p class="site-author-name" itemprop="name">Echo</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Echogithu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="13433680844@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#学习目标"><span class="nav-number">1.</span> <span class="nav-text">学习目标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Function类型"><span class="nav-number">2.</span> <span class="nav-text">Function类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#简介"><span class="nav-number">2.1.</span> <span class="nav-text">简介</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#定义函数方式："><span class="nav-number">2.1.1.</span> <span class="nav-text">定义函数方式：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#没有重载"><span class="nav-number">2.2.</span> <span class="nav-text">没有重载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#函数声明与函数表达式"><span class="nav-number">2.3.</span> <span class="nav-text">函数声明与函数表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#函数声明"><span class="nav-number">2.3.1.</span> <span class="nav-text">函数声明</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#函数表达式"><span class="nav-number">2.3.2.</span> <span class="nav-text">函数表达式</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#作为值的函数"><span class="nav-number">2.4.</span> <span class="nav-text">作为值的函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#函数内部属性"><span class="nav-number">2.5.</span> <span class="nav-text">函数内部属性</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#arguments"><span class="nav-number">2.5.1.</span> <span class="nav-text">arguments</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#this"><span class="nav-number">2.5.2.</span> <span class="nav-text">this</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#函数属性和方法"><span class="nav-number">2.6.</span> <span class="nav-text">函数属性和方法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#length属性"><span class="nav-number">2.6.1.</span> <span class="nav-text">length属性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#prototype属性"><span class="nav-number">2.6.2.</span> <span class="nav-text">prototype属性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#apply-和call"><span class="nav-number">2.6.3.</span> <span class="nav-text">apply()和call()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#bind"><span class="nav-number">2.6.4.</span> <span class="nav-text">bind()</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本包装类型"><span class="nav-number">3.</span> <span class="nav-text">基本包装类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#引用类型与基本包装类型的区别"><span class="nav-number">3.1.</span> <span class="nav-text">引用类型与基本包装类型的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Boolean"><span class="nav-number">3.2.</span> <span class="nav-text">Boolean</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Number"><span class="nav-number">3.3.</span> <span class="nav-text">Number</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#转换方法"><span class="nav-number">3.3.1.</span> <span class="nav-text">转换方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#实例方法"><span class="nav-number">3.3.2.</span> <span class="nav-text">实例方法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#String"><span class="nav-number">3.4.</span> <span class="nav-text">String</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#字符方法"><span class="nav-number">3.4.1.</span> <span class="nav-text">字符方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#字符串操作方法"><span class="nav-number">3.4.2.</span> <span class="nav-text">字符串操作方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#字符串截取"><span class="nav-number">3.4.3.</span> <span class="nav-text">字符串截取</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#字符串位置方法"><span class="nav-number">3.4.4.</span> <span class="nav-text">字符串位置方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#trim-方法"><span class="nav-number">3.4.5.</span> <span class="nav-text">trim()方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#字符串大小写转换方法"><span class="nav-number">3.4.6.</span> <span class="nav-text">字符串大小写转换方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#字符串模式匹配方法"><span class="nav-number">3.4.7.</span> <span class="nav-text">字符串模式匹配方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#字符串比较方法"><span class="nav-number">3.4.8.</span> <span class="nav-text">字符串比较方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#静态方法"><span class="nav-number">3.4.9.</span> <span class="nav-text">静态方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#HTML方法"><span class="nav-number">3.4.10.</span> <span class="nav-text">HTML方法</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Echo</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
