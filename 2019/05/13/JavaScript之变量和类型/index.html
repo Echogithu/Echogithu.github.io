@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="JavaScript,JS总结,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="JavaScript的类型JavaScript分为基本类型和引用类型。  基本类型：按值访问，可操作保存在变量中的实际的值。 基本类型有：Undefined、Null、String、Number、Boolean、Symbol(ES6新定义） 引用类型: 当复制保存着对象的某个变量时，操作的是对象的引用。 引用类型有：Object、Array、Function">
+<meta name="keywords" content="JavaScript,JS总结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript之变量和类型">
+<meta property="og:url" content="http://yoursite.com/2019/05/13/JavaScript之变量和类型/index.html">
+<meta property="og:site_name" content="Echo">
+<meta property="og:description" content="JavaScript的类型JavaScript分为基本类型和引用类型。  基本类型：按值访问，可操作保存在变量中的实际的值。 基本类型有：Undefined、Null、String、Number、Boolean、Symbol(ES6新定义） 引用类型: 当复制保存着对象的某个变量时，操作的是对象的引用。 引用类型有：Object、Array、Function">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2019/05/13/JavaScript之变量和类型/1.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/13/JavaScript之变量和类型/2.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/13/JavaScript之变量和类型/3.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/13/JavaScript之变量和类型/4.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/13/JavaScript之变量和类型/5.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/13/JavaScript之变量和类型/6.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/13/JavaScript之变量和类型/7.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/13/JavaScript之变量和类型/8.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/13/JavaScript之变量和类型/9.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/13/JavaScript之变量和类型/10.png">
+<meta property="og:updated_time" content="2019-05-13T02:21:15.585Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript之变量和类型">
+<meta name="twitter:description" content="JavaScript的类型JavaScript分为基本类型和引用类型。  基本类型：按值访问，可操作保存在变量中的实际的值。 基本类型有：Undefined、Null、String、Number、Boolean、Symbol(ES6新定义） 引用类型: 当复制保存着对象的某个变量时，操作的是对象的引用。 引用类型有：Object、Array、Function">
+<meta name="twitter:image" content="http://yoursite.com/2019/05/13/JavaScript之变量和类型/1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/05/13/JavaScript之变量和类型/">
+
+
+
+
+
+  <title>JavaScript之变量和类型 | Echo</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Echo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/13/JavaScript之变量和类型/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Echo">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/header.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Echo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JavaScript之变量和类型</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-13T10:12:36+08:00">
+                2019-05-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="JavaScript的类型"><a href="#JavaScript的类型" class="headerlink" title="JavaScript的类型"></a>JavaScript的类型</h3><p>JavaScript分为<strong>基本类型</strong>和<strong>引用类型</strong>。</p>
+<ul>
+<li>基本类型：按值访问，可操作保存在变量中的实际的值。</li>
+<li>基本类型有：Undefined、Null、String、Number、Boolean、Symbol(ES6新定义）</li>
+<li>引用类型: 当复制保存着对象的某个变量时，操作的是对象的引用。</li>
+<li>引用类型有：Object、Array、Function</li>
+</ul>
+<a id="more"></a>
+<h4 id="基本类型和引用类型"><a href="#基本类型和引用类型" class="headerlink" title="基本类型和引用类型"></a>基本类型和引用类型</h4><h5 id="1-基本类型"><a href="#1-基本类型" class="headerlink" title="1.基本类型"></a>1.基本类型</h5><p>基本类型的数据在内存中占有固定大小的空间，它是存储在栈（stack）中的简单数据，也就是说，值类型的值直接存储在变量访问的位置，按值访问，即你可以操作保存在变量中的实际的值。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var num = 10;</span><br><span class="line">var str = &quot;hello JS&quot;;</span><br><span class="line">var flag = true;</span><br><span class="line">var un = undefined;</span><br><span class="line">var nu = null;</span><br></pre></td></tr></table></figure></p>
+<p><img src="/2019/05/13/JavaScript之变量和类型/1.png" alt></p>
+<h6 id="基本类型有以下几个特点："><a href="#基本类型有以下几个特点：" class="headerlink" title="基本类型有以下几个特点："></a>基本类型有以下几个特点：</h6><ul>
+<li>基本类型的值是不可变的，也无法给基本类型添加属性和方法。</li>
+<li>基本类型的比较是值的比较。</li>
+<li>基本类型的变量是存放在栈区的（栈区指内存里的栈内存），栈区包括了变量的标识符和变量的值。</li>
+</ul>
+<h6 id="基本类型详解："><a href="#基本类型详解：" class="headerlink" title="基本类型详解："></a>基本类型详解：</h6><h6 id="1-Number"><a href="#1-Number" class="headerlink" title="1. Number"></a>1. Number</h6><ul>
+<li>Number类型表示通常意义上的”数字”,包含整数和浮点数两种值。</li>
+</ul>
+<ol>
+<li><strong>整数</strong></li>
+</ol>
+<ul>
+<li>我们通常用到的是十进制的整数，除了十进制，还可通过八进制、十六进制来表示整数。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var num10 = 10; // 十进制 10</span><br><span class="line">var num8 = 012; // 八进制 10</span><br><span class="line">var num16 = 0xA; // 十六进制 10</span><br><span class="line">num10 + num8 + num16 // 30</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>进行算术计算时，结果都会转换为十进制数值。</p>
+<ol start="2">
+<li><strong>浮点数</strong></li>
+</ol>
+<ul>
+<li>浮点数即我们通常用到的小数</li>
+<li>根据浮点数的定义，非整数的Number类型无法用== 或 === 来比较。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log( 0.1+0.2 == 0.3 ); //false</span><br></pre></td></tr></table></figure>
+<p>浮点数运算的精度问题导致等式左右结果并不是严格相等，而是相差了一个微小的值。</p>
+<ul>
+<li>正确的比较方法是使用JS提供的最小精度值：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log( Math.abs( 0.1+0.2-0.3) &lt;= Number.EPSILON) //true</span><br></pre></td></tr></table></figure>
+<p>检查等式左右两边差的绝对值是否小于最小精度，才是正确的比较浮点数的方法。</p>
+<ul>
+<li>也可以使用第三方插件实现，比如：bignumber.js</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var x = new BigNumber(0.1);</span><br><span class="line">x.plus(0.2).toNumber() === 0.3 // true</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li><strong>数值范围</strong>：<br>Number能够表示数值范围：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Number.MIN_VALUE; // 5e-324</span><br><span class="line">Number.MAX_VALUE; // 1.7976931348623157e+308</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>超出这个范围的值，将会自动转为特殊的 Infinity  值：</p>
+<ul>
+<li>Infinity:正无穷大。</li>
+<li>-Infinity:负无穷大。</li>
+</ul>
+<p>JavaScript中有 +0 和 -0，区分他们方式就是检测 1 / x 的结果是 Infinity 还是 -Infinity。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1 / +0 // Infinity</span><br><span class="line">1 / -0 // -Infinity</span><br></pre></td></tr></table></figure></p>
+<ol start="4">
+<li><strong>NaN</strong>：</li>
+</ol>
+<ul>
+<li>非数字类型。</li>
+<li>涉及到的 任何关于NaN的操作，都会返回NaN。</li>
+<li>NaN与任何值都不相等，包括它自己。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NaN / 10 // NaN</span><br><span class="line">NaN === NaN // false</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>isNaN() 函数用于检查其参数是否是非数字值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">isNaN(NaN) // true</span><br><span class="line">isNaN(10) // false</span><br></pre></td></tr></table></figure></p>
+<h6 id="2-Boolean"><a href="#2-Boolean" class="headerlink" title="2.Boolean"></a>2.Boolean</h6><p>Boolean类型表示逻辑意义上的真和假，它有两个值，true和false</p>
+<p>在运算中true=1,false=0。</p>
+<h6 id="3-Undefined"><a href="#3-Undefined" class="headerlink" title="3.Undefined"></a>3.Undefined</h6><p>只有一个值，即undefined值。<br>使用var声明了变量，但未给变量初始化值，那么这个变量的值就是undefined。(已声明，未初始化）,简单说，就是任何变量在被赋值之前都是undefined。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var a;</span><br><span class="line">a === undefined; // true</span><br><span class="line">typeof a === &apos;undefined&apos;; // true</span><br></pre></td></tr></table></figure></p>
+<h6 id="4-Null"><a href="#4-Null" class="headerlink" title="4.Null"></a>4.Null</h6><p>Null 类型表示空值(已声明，初始化为null)，它只有一个值，即 null 。<br>null值表示一个空对象指针，使用typeof操作符检测null值会返回”object”。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var a = null;</span><br><span class="line">a === null; // true</span><br><span class="line">typeof a === &apos;object&apos; // true</span><br></pre></td></tr></table></figure></p>
+<h6 id="5-String"><a href="#5-String" class="headerlink" title="5.String"></a>5.String</h6><ul>
+<li>字符串是存储字符的变量,由双引号(“ “)或单引号(‘ ‘)表示。</li>
+<li>字符串有length属性。可以取得字符串的长度。</li>
+<li>JavaScript中的字符串是不可变的，一旦字符串被创建，就无法改变，所以字符串具有值类型的特征。</li>
+</ul>
+<h6 id="6-Symbol"><a href="#6-Symbol" class="headerlink" title="6.Symbol"></a>6.Symbol</h6><p>Symbol是ES6中引入的新类型，表示独一无二的值，它的出现使对象的属性名可以使用两种类型，一个是String，一个是Symbol。凡是属性名是Symbol类型的，可以保证与其它属性名不会产生冲突。</p>
+<h5 id="2-引用类型"><a href="#2-引用类型" class="headerlink" title="2.引用类型"></a>2.引用类型</h5><p>引用类型的数据：栈中存储的是数据在内存中的地址，数据在内存中使用堆单独存储。</p>
+<p>引用类型的值大小不固定，因此不能把它们保存到栈内存中，但内存地址大小是固定的，因此可以将内存地址保存在栈内存中，把数据存放到堆中。</p>
+<p>这样当我们查询引用类型的变量时，先从栈中读取内存地址，然后根据地址找到堆中的值。也就是说，存储在变量处的值是一个指针（point），指向存储对象的内存处。 </p>
+<p><img src="/2019/05/13/JavaScript之变量和类型/2.png" alt></p>
+<h6 id="引用类型有以下几个特点："><a href="#引用类型有以下几个特点：" class="headerlink" title="引用类型有以下几个特点："></a>引用类型有以下几个特点：</h6><ul>
+<li>引用类型的值是可变的，也可以动态给引用类型添加属性和方法。</li>
+<li>引用类型的比较是引用的比较。</li>
+<li>引用类型的值是同时保存在栈内存和堆内存中的对象。<br><img src="/2019/05/13/JavaScript之变量和类型/3.png" alt></li>
+</ul>
+<h6 id="1-Object"><a href="#1-Object" class="headerlink" title="1.Object"></a>1.Object</h6><p>Object是带有属性和方法的特殊数据类型。<br>在JavaScript中，对象的定义是”属性的集合”。当声明一个对象时，它会自动初始化一组属性。</p>
+<p><img src="/2019/05/13/JavaScript之变量和类型/4.png" alt></p>
+<h6 id="总结一下基本类型和引用类型的区别："><a href="#总结一下基本类型和引用类型的区别：" class="headerlink" title="总结一下基本类型和引用类型的区别："></a>总结一下基本类型和引用类型的区别：</h6><ul>
+<li>基本类型的变量是存放在栈区的（栈区指内存里的栈内存）；引用类型的值是同时保存在栈内存和堆内存中的对象；</li>
+<li>基本类型的比较是值的比较；引用类型的比较是引用的比较；</li>
+<li>基本类型的值是不可变的；引用类型的值是可变的。</li>
+</ul>
+<h4 id="值类型与引用类型的赋值"><a href="#值类型与引用类型的赋值" class="headerlink" title="值类型与引用类型的赋值"></a>值类型与引用类型的赋值</h4><h5 id="值类型的赋值"><a href="#值类型的赋值" class="headerlink" title="值类型的赋值"></a>值类型的赋值</h5><p>直接将存储的数据复制一份进行赋值，两份数据在内存中是完全独立的。<br>比如： var a = 1; var b= a;这两句代码在内存中的体现是： </p>
+<p><img src="/2019/05/13/JavaScript之变量和类型/5.png" alt></p>
+<p><strong>赋值步骤</strong>：<br>1.var a = 1;表示变量a存储的是数字1；<br>2.将数据拷贝一份，也就是将1拷贝一份，内存中有两个1；<br>3.将拷贝的1赋值给b<br>4.因为值类型的赋值是直接把数据也复制了一份，a和b是单独的存储空间，任意改变a 和b的值，都不会给对方造成影响。</p>
+<h5 id="引用类型的赋值"><a href="#引用类型的赋值" class="headerlink" title="引用类型的赋值"></a>引用类型的赋值</h5><p>引用类型赋值的时候，是将变量中存储的地址复制一份单独存储，但是两个变量共享同一个对象 修改其中一个对象，两外一个引用来访问的时候，也会访问到修改后的对象。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var p = &#123;name:“Echo”, age:20&#125;;</span><br><span class="line">var p1 = p;</span><br></pre></td></tr></table></figure></p>
+<p><img src="/2019/05/13/JavaScript之变量和类型/6.png" alt></p>
+<p><strong>赋值步骤</strong>：<br>1.var p = {name:”Echo”, age:20};p中存储的是对象的地址;<br>2.赋值就是将变量p中栈存储的数据，也就是地址拷贝一份, 然后将该数据赋值给p1;<br>3.此时堆内存中只有 1 个对象，变量p和p1同时指向这个对象.<br>4.由于p和p1 都是指向同一个对象，如果修改p.name 那么p1.name也会随之改变。</p>
+<h4 id="面试常见问题"><a href="#面试常见问题" class="headerlink" title="面试常见问题"></a>面试常见问题</h4><h5 id="为什么有的编程规范要求用-void-0-代替-undefined"><a href="#为什么有的编程规范要求用-void-0-代替-undefined" class="headerlink" title="为什么有的编程规范要求用 void 0 代替 undefined?"></a>为什么有的编程规范要求用 void 0 代替 undefined?</h5><p>答：因为undefined在javascript中不是保留字。也就是说你可以给undefined赋值：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function changeUndefined() &#123;</span><br><span class="line">    var undefined = &apos;hello world&apos;</span><br><span class="line">    console.log(undefined); //&apos;hello world&apos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>我们可以在一个局部作用于中改变undefined的值，全局环境下不可以。 </p>
+<p>而void 0无论何时何地，后面跟了什么，结果都得到undefined.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if (obj === void 0) &#123;</span><br><span class="line">  // xxx</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>所以有的编程规范要求用 void 0 代替 undefined。</p>
+<h5 id="null和undefined的区别"><a href="#null和undefined的区别" class="headerlink" title="null和undefined的区别"></a>null和undefined的区别</h5><p>答：</p>
+<blockquote>
+<p>null表示”没有对象”,即该处不应该有值。</p>
+</blockquote>
+<p><strong>典型用法</strong>：</p>
+<ol>
+<li>作为函数的参数，表示该函数的参数不是对象。</li>
+<li>作为对象原型链的终点。</li>
+</ol>
+<p>null值表示一个空对象指针，对null执行typeof运算，返回字符串“object”。</p>
+<blockquote>
+<p>undefined表示”缺少值”，就是此处应该有一个值，但是还没有定义。</p>
+</blockquote>
+<p><strong>典型用法</strong>：</p>
+<ol>
+<li>变量被声明了，但没有赋值时，就等于undefined。</li>
+<li>调用函数时，应该提供的参数没有提供，该参数等于undefined。</li>
+<li>对象没有赋值的属性，该属性的值为undefined。</li>
+<li>函数没有返回值时，默认返回undefined。</li>
+</ol>
+<p>对undefined执行typeof运算，返回undefined。</p>
+<h5 id="为什么会有栈内存和堆内存之分？"><a href="#为什么会有栈内存和堆内存之分？" class="headerlink" title="为什么会有栈内存和堆内存之分？"></a>为什么会有栈内存和堆内存之分？</h5><p>答：通常与垃圾回收机制有关。为了使程序运行时占用的内存最小。</p>
+<p>当一个方法执行时，每个方法都会建立自己的内存栈，在这个方法内定义的变量将会逐个放入这块栈内存里，随着方法的执行结束，这个方法的内存栈也将自然销毁了。因此，所有在方法中定义的变量都是放在栈内存中的；</p>
+<p>当我们在程序中创建一个对象时，这个对象将被保存到运行时数据区中，以便反复利用（因为对象的创建成本通常较大），这个运行时数据区就是堆内存。堆内存中的对象不会随方法的结束而销毁，即使方法结束后，这个对象还可能被另一个引用变量所引用（方法的参数传递时很常见），则这个对象依然不会被销毁，只有当一个对象没有任何引用变量引用它时，系统的垃圾回收机制才会在核实的时候回收它。</p>
+<h5 id="JavaScript中的变量在内存中的具体存储形式"><a href="#JavaScript中的变量在内存中的具体存储形式" class="headerlink" title="JavaScript中的变量在内存中的具体存储形式"></a>JavaScript中的变量在内存中的具体存储形式</h5><p>答：在JS中，每一个数据都需要一个内存空间。内存空间又被分为两种，栈内存(stock)与堆内存(heap)。变量的储存方式取决于变量的类型是基本类型还是引用类型。</p>
+<ul>
+<li><strong>基本类型与栈内存</strong><br>JS中的基础数据类型，这些值都有固定的大小，往往都以键值对的方式储存在栈内存中，由系统自动分配存储空间。我们可以直接操作保存在栈内存空间的值，因此基础数据类型都是按值访问。<br><img src="/2019/05/13/JavaScript之变量和类型/7.png" alt><br>栈空间的存储原理为：<strong>先进后出</strong>。</li>
+</ul>
+<ul>
+<li><strong>引用类型与堆内存</strong><br>JS的引用数据类型，比如数组Array，它们值的大小是不固定的。引用数据类型的值是保存在堆内存中的对象。JavaScript不允许直接访问堆内存中的位置，因此我们不能直接操作对象的堆内存空间。在操作对象时，实际上是在操作对象的引用而不是实际的对象。因此，引用类型的值会在堆内存中开辟一块空间，储存这个对象的值，并同时在栈内存中储存变量和指向对象的指针。这里的引用，我们可以理解为保存在变量对象中的一个地址，该地址与堆内存的实际值相关联。<br><img src="/2019/05/13/JavaScript之变量和类型/8.png" alt></li>
+</ul>
+<p>当我们要访问堆内存中的引用数据类型时，实际上我们首先是从变量对象中获取了该对象的地址引用（或者地址指针），然后再从堆内存中取得我们需要的数据。</p>
+<p>最后一张图总结：<br><img src="/2019/05/13/JavaScript之变量和类型/9.png" alt></p>
+<h5 id="基本类型对应的内置对象，以及他们之间的装箱拆箱操作"><a href="#基本类型对应的内置对象，以及他们之间的装箱拆箱操作" class="headerlink" title="基本类型对应的内置对象，以及他们之间的装箱拆箱操作"></a>基本类型对应的内置对象，以及他们之间的装箱拆箱操作</h5><p>答：基本类型中的内置对象有 String()、Number()、Boolean()、symbol()</p>
+<p>引用类型的有 RegExp()、Date()、Error()、Array()、Function()、Object()</p>
+<ul>
+<li>基本类型的装箱拆箱操作：</li>
+</ul>
+<p>装箱转换是指将一个值类型隐式地转换成一个object 类型，或者把这个值类型转换成一个被该值类型应用的接口类型interface-type。把一个值类型的值装箱，也就是创建一个object 实例并将这个值复制给这个object。</p>
+<p>拆箱转换是指将一个对象类型显式地转换成一个值类型，或是将一个接口类型显式地转换成一个执行该接口的值类型。</p>
+<ul>
+<li><strong>总结来说</strong>:<br>把基本数据类型转换为对应的引用类型的操作称为装箱，把引用类型转换为基本的数据类型称为拆箱。</li>
+</ul>
+<h5 id="至少可以说出三种判断JavaScript数据类型的方式，以及他们的优缺点，如何准确的判断数组类型"><a href="#至少可以说出三种判断JavaScript数据类型的方式，以及他们的优缺点，如何准确的判断数组类型" class="headerlink" title="至少可以说出三种判断JavaScript数据类型的方式，以及他们的优缺点，如何准确的判断数组类型"></a>至少可以说出三种判断JavaScript数据类型的方式，以及他们的优缺点，如何准确的判断数组类型</h5><p>答：</p>
+<ol>
+<li><strong>typeof操作符</strong>：可以判断基本数据类型(除了null)，对于引用数类型返回Object</li>
+<li><strong>instanceof操作符</strong>: 判断对象和构造函数在原型链上是否有关系，如果有关系，返回true，否则返回false,主要用来判断变量是否是某个构造函数的实例。但是Object是所有对象的原型，所以在obj instanceof Object中，无论参数obj是数组还是函数都会返回true。</li>
+<li><strong>constructor</strong>： 查看对象对应的构造函数。根据实例对象寻找属性的顺序，若实例对象上没有实例属性或方法时，就去原型链上寻找，因此，实例对象也是能使用constructor属性的,同样的这个也只能输出构造函数。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// var nul = null;</span><br><span class="line">// alert(nul.constructor == Object);//报错</span><br><span class="line">//var und = undefined;</span><br><span class="line">//alert(und.constructor == Object);//报错</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>undefined和null是不能够判断出类型的，并且会报错。因为null和undefined是无效的对象，因此是不会有constructor存在的。<br>注意：<br>使用constructor是不保险的，因为constructor属性是可以被修改的，会导致检测出的结果不正确。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function Aaa()&#123;</span><br><span class="line">&#125;</span><br><span class="line">Aaa.prototype.constructor = Aaa;//程序可以自动添加，当我们写个构造函数的时候，程序会自动添加这句代码</span><br><span class="line">function BBB()&#123;&#125;</span><br><span class="line">Aaa.prototype.constructor = BBB;//此时我们就修改了Aaa构造函数的指向问题</span><br><span class="line">alert(Aaa.construtor==Aaa);//false</span><br></pre></td></tr></table></figure></p>
+<ol start="4">
+<li><strong>Object.prototype.toString</strong>：不管是什么类型的，Object.prototype.toString.call();都可以判断出其具体的类型。<br>toString是Object原型对象上的一个方法，该方法默认返回其调用者的具体类型，更严格的讲，是 toString运行时this指向的对象类型, 返回的类型。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">var str = &apos;hello&apos;;</span><br><span class="line">console.log(Object.prototype.toString.call(str));//[object String]</span><br><span class="line"></span><br><span class="line">var bool = true;</span><br><span class="line">console.log(Object.prototype.toString.call(bool))//[object Boolean]</span><br><span class="line"></span><br><span class="line">var num = 123;</span><br><span class="line">console.log(Object.prototype.toString.call(num));//[object Number]</span><br><span class="line"></span><br><span class="line">var nul = null;</span><br><span class="line">console.log(Object.prototype.toString.call(nul));//[object Null]</span><br><span class="line"></span><br><span class="line">var und = undefined;</span><br><span class="line">console.log(Object.prototype.toString.call(und));//[object Undefined]</span><br><span class="line"></span><br><span class="line">var oDate = new Date();</span><br><span class="line">console.log(Object.prototype.toString.call(oDate));//[object Date]</span><br><span class="line"></span><br><span class="line">var json = &#123;&#125;;</span><br><span class="line">console.log(Object.prototype.toString.call(json));//[object Object]</span><br><span class="line"></span><br><span class="line">var arr = [];</span><br><span class="line">console.log(Object.prototype.toString.call(arr));//[object Array]</span><br><span class="line"></span><br><span class="line">var reg = /a/;</span><br><span class="line">console.log(Object.prototype.toString.call(reg));//[object RegExp]</span><br><span class="line"></span><br><span class="line">var fun = function()&#123;&#125;;</span><br><span class="line">console.log(Object.prototype.toString.call(fun));//[object Function]</span><br><span class="line"></span><br><span class="line">var error = new Error();</span><br><span class="line">console.log(Object.prototype.toString.call(error));//[object Error]</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>分析一下四种方法各自的优缺点:</p>
+<p><img src="/2019/05/13/JavaScript之变量和类型/10.png" alt></p>
+<p>instanceof和constructor不能跨iframe<br><strong>例：跨页面判断是否是数组</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">window.onload = function()&#123;</span><br><span class="line">	var oF = document.createElement(&apos;iframe&apos;);</span><br><span class="line">	document.body.appendChild( oF );</span><br><span class="line"></span><br><span class="line">	var ifArray = window.frames[0].Array;</span><br><span class="line"></span><br><span class="line">	var arr = new ifArray();</span><br><span class="line"></span><br><span class="line">	//alert( arr.constructor == Array );  //false</span><br><span class="line"></span><br><span class="line">	//alert( arr instanceof Array );  //false</span><br><span class="line"></span><br><span class="line">	alert( Object.prototype.toString.call(arr) == &apos;[object Array]&apos; );  //true</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>最后，面试经常有问说一种最简单的判断是数组的方法，记住是object.prototype.toString.call()哦！</p>
+<h5 id="可能发生隐式类型转换的场景以及转换原则，应如何避免或巧妙应用"><a href="#可能发生隐式类型转换的场景以及转换原则，应如何避免或巧妙应用" class="headerlink" title="可能发生隐式类型转换的场景以及转换原则，应如何避免或巧妙应用"></a>可能发生隐式类型转换的场景以及转换原则，应如何避免或巧妙应用</h5><p>答：隐式转换一般说的是Boolean的转换<br>Boolean 场景，变量放在if的判断语句时，如果变量不是布尔值，那么就会发生隐式转换</p>
+<ul>
+<li>String，非空字符串会转换成true，空字符串会转换成false</li>
+<li>Number, 非0会转换成true，0会转换成false</li>
+<li>Object，任何对象都会转成true</li>
+</ul>
+<h5 id="出现小数精度丢失的原因，JavaScript可以存储的最大数字、最大安全数字，JavaScript处理大数字的方法、避免精度丢失的方法"><a href="#出现小数精度丢失的原因，JavaScript可以存储的最大数字、最大安全数字，JavaScript处理大数字的方法、避免精度丢失的方法" class="headerlink" title="出现小数精度丢失的原因，JavaScript可以存储的最大数字、最大安全数字，JavaScript处理大数字的方法、避免精度丢失的方法"></a>出现小数精度丢失的原因，JavaScript可以存储的最大数字、最大安全数字，JavaScript处理大数字的方法、避免精度丢失的方法</h5><p>答：</p>
+<ul>
+<li>精度丢失原因，说是JavaScript使用了IEEE 754规范，二进制储存十进制的小数时不能完整的表示小数</li>
+<li>能够表示的最大数字Number.MAX_VALUE等于1.7976931348623157e+308,最大安全数字Number.MAX_SAFE_INTEGER等于9007199254740991</li>
+<li>避免精度丢失<ul>
+<li>计算小数时，先乘100或1000，变成整数再运算</li>
+<li>如果值超出了安全整数，有一个最新提案，BigInt大整数，它可以表示任意大小的整数，注意只能表示整数，而不受安全整数的限制。</li>
+</ul>
+</li>
+</ul>
+<h5 id="何时使用-何时使用"><a href="#何时使用-何时使用" class="headerlink" title="何时使用=== 何时使用=="></a>何时使用=== 何时使用==</h5><p>答：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if (obj.a ==null) &#123;</span><br><span class="line">    //这里相当于 obj.a === null || obj.a === undefined,的简写形式</span><br><span class="line">    //其他情况全部用 ===</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h5 id="JS中有哪些内置函数"><a href="#JS中有哪些内置函数" class="headerlink" title="JS中有哪些内置函数"></a>JS中有哪些内置函数</h5><p>答：</p>
+<ul>
+<li>Object</li>
+<li>Array</li>
+<li>Boolean</li>
+<li>Number</li>
+<li>String</li>
+<li>Function</li>
+<li>Date</li>
+<li>RegExp</li>
+<li>Error</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+            <a href="/tags/JS总结/" rel="tag"># JS总结</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/09/《JavaScript高级程序设计》学习笔记之引用类型（三）/" rel="next" title="《JavaScript高级程序设计》学习笔记之引用类型（三）">
+                <i class="fa fa-chevron-left"></i> 《JavaScript高级程序设计》学习笔记之引用类型（三）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/header.jpg" alt="Echo">
+            
+              <p class="site-author-name" itemprop="name">Echo</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Echogithu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="13433680844@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#JavaScript的类型"><span class="nav-number">1.</span> <span class="nav-text">JavaScript的类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本类型和引用类型"><span class="nav-number">1.1.</span> <span class="nav-text">基本类型和引用类型</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-基本类型"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.基本类型</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#基本类型有以下几个特点："><span class="nav-number">1.1.1.1.</span> <span class="nav-text">基本类型有以下几个特点：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#基本类型详解："><span class="nav-number">1.1.1.2.</span> <span class="nav-text">基本类型详解：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#1-Number"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">1. Number</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-Boolean"><span class="nav-number">1.1.1.4.</span> <span class="nav-text">2.Boolean</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-Undefined"><span class="nav-number">1.1.1.5.</span> <span class="nav-text">3.Undefined</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#4-Null"><span class="nav-number">1.1.1.6.</span> <span class="nav-text">4.Null</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#5-String"><span class="nav-number">1.1.1.7.</span> <span class="nav-text">5.String</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#6-Symbol"><span class="nav-number">1.1.1.8.</span> <span class="nav-text">6.Symbol</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-引用类型"><span class="nav-number">1.1.2.</span> <span class="nav-text">2.引用类型</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#引用类型有以下几个特点："><span class="nav-number">1.1.2.1.</span> <span class="nav-text">引用类型有以下几个特点：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#1-Object"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">1.Object</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#总结一下基本类型和引用类型的区别："><span class="nav-number">1.1.2.3.</span> <span class="nav-text">总结一下基本类型和引用类型的区别：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#值类型与引用类型的赋值"><span class="nav-number">1.2.</span> <span class="nav-text">值类型与引用类型的赋值</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#值类型的赋值"><span class="nav-number">1.2.1.</span> <span class="nav-text">值类型的赋值</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#引用类型的赋值"><span class="nav-number">1.2.2.</span> <span class="nav-text">引用类型的赋值</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#面试常见问题"><span class="nav-number">1.3.</span> <span class="nav-text">面试常见问题</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#为什么有的编程规范要求用-void-0-代替-undefined"><span class="nav-number">1.3.1.</span> <span class="nav-text">为什么有的编程规范要求用 void 0 代替 undefined?</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#null和undefined的区别"><span class="nav-number">1.3.2.</span> <span class="nav-text">null和undefined的区别</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#为什么会有栈内存和堆内存之分？"><span class="nav-number">1.3.3.</span> <span class="nav-text">为什么会有栈内存和堆内存之分？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#JavaScript中的变量在内存中的具体存储形式"><span class="nav-number">1.3.4.</span> <span class="nav-text">JavaScript中的变量在内存中的具体存储形式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#基本类型对应的内置对象，以及他们之间的装箱拆箱操作"><span class="nav-number">1.3.5.</span> <span class="nav-text">基本类型对应的内置对象，以及他们之间的装箱拆箱操作</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#至少可以说出三种判断JavaScript数据类型的方式，以及他们的优缺点，如何准确的判断数组类型"><span class="nav-number">1.3.6.</span> <span class="nav-text">至少可以说出三种判断JavaScript数据类型的方式，以及他们的优缺点，如何准确的判断数组类型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#可能发生隐式类型转换的场景以及转换原则，应如何避免或巧妙应用"><span class="nav-number">1.3.7.</span> <span class="nav-text">可能发生隐式类型转换的场景以及转换原则，应如何避免或巧妙应用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#出现小数精度丢失的原因，JavaScript可以存储的最大数字、最大安全数字，JavaScript处理大数字的方法、避免精度丢失的方法"><span class="nav-number">1.3.8.</span> <span class="nav-text">出现小数精度丢失的原因，JavaScript可以存储的最大数字、最大安全数字，JavaScript处理大数字的方法、避免精度丢失的方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#何时使用-何时使用"><span class="nav-number">1.3.9.</span> <span class="nav-text">何时使用=== 何时使用==</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#JS中有哪些内置函数"><span class="nav-number">1.3.10.</span> <span class="nav-text">JS中有哪些内置函数</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Echo</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
